@@ -1,0 +1,41 @@
+.newProduct_container {
+  position: relative;
+}
+.newProduct_container h3 {
+  text-align: left;
+  width: 96%;
+  padding-left: 0.7rem;
+  font-size: 16px;
+}
+.form_container {
+  width: 96%;
+  margin: 1rem auto;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+}
+.form_inputContainer {
+  padding: 0.7rem 0.5rem 0.5rem 0.5rem;
+  display: flex;
+  flex-flow: column;
+}
+
+.form_inputContainer select {
+  padding: 0.5rem;
+}
+.form_submit_container {
+  width: 90%;
+  margin: 0.5rem auto;
+}
+
+.form_submit {
+  padding: 0.5rem;
+  width: 100%;
+  margin: 1rem auto;
+}
+
+.textarea {
+  resize: none;
+  width: 100%;
+  height: 10rem;
+}

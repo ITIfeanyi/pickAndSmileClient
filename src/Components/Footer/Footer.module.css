@@ -1,0 +1,22 @@
+.EmptyFooter_container,
+.EmptyFooter_subcontainer {
+  background-color: rgb(37, 37, 92);
+  color: white;
+  width: 100%;
+  display: flex;
+  padding: 0.1rem;
+  justify-content: space-around;
+  font-size: 12px;
+  letter-spacing: 0.4;
+}
+.EmptyFooter_subcontainer {
+  display: block;
+  text-align: center;
+}
+
+.EmptyFooter_subcontainer p {
+  padding: 0.4rem;
+}
+.icon_heart {
+  color: red;
+}
