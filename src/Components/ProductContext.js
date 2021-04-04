@@ -57,7 +57,7 @@ const ProductContextProvider = ({ children }) => {
       `,
     };
 
-    fetch("http://localhost:4000/graphql", {
+    fetch("https://git.heroku.com/sheltered-basin-40908.git/graphql", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),
@@ -123,7 +123,7 @@ const ProductContextProvider = ({ children }) => {
       }
       `,
     };
-    fetch("http://localhost:4000/graphql", {
+    fetch("https://git.heroku.com/sheltered-basin-40908.git/graphql", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),
