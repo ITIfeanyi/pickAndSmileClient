@@ -4,7 +4,7 @@ import styles from "./NewProduct.module.css";
 import { ProductContext } from "../ProductContext";
 
 const NewProduct = () => {
-  const { newProduct, handleNewProduct, handleNewProductSubmit } = useContext(
+  const { handleNewProduct, handleNewProductSubmit } = useContext(
     ProductContext
   );
   return (
