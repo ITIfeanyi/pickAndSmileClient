@@ -4,14 +4,21 @@ import styles from "./NewProduct.module.css";
 import { ProductContext } from "../ProductContext";
 
 const NewProduct = () => {
-  const { handleNewProduct, handleNewProductSubmit } = useContext(
-    ProductContext
-  );
+  const {
+    wasProductUploaded,
+    handleNewProduct,
+    handleNewProductSubmit,
+  } = useContext(ProductContext);
   return (
     <>
       <div className={styles.newProduct_container}>
         <Header />
         <h3>Add new product</h3>
+        {wasProductUploaded ? (
+          <p className={styles.productAdded}> Product added successfully</p>
+        ) : (
+          <p className={styles.productFailed}>An error occured. Please rety</p>
+        )}
         <div className={styles.form_container}>
           <form onSubmit={handleNewProductSubmit}>
             <div className={styles.form_inputContainer}>

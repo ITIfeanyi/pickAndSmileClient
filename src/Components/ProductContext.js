@@ -20,6 +20,7 @@ const ProductContextProvider = ({ children }) => {
     category: "",
     stock_available: "",
   });
+  const [wasProductUploaded, setWasProductUploaded] = useState(null);
 
   //cartitem localStorage
   useEffect(() => {
@@ -31,7 +32,6 @@ const ProductContextProvider = ({ children }) => {
   };
   const handleNewProductSubmit = (e) => {
     e.preventDefault();
-    console.log(newProduct);
 
     const {
       name,
@@ -57,23 +57,28 @@ const ProductContextProvider = ({ children }) => {
       `,
     };
 
-    fetch("https://git.heroku.com/sheltered-basin-40908.git/graphql", {
+    fetch("https://sheltered-basin-40908.herokuapp.com/graphql", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),
     })
       .then((res) => res.json())
       .then((data) => {
-        setNewProduct({
-          name: "",
-          price: "",
-          discount: "",
-          shortDescription: "",
-          description: ``,
-          image_url: "",
-          category: "",
-          stock_available: "",
-        });
+        if (data) {
+          setNewProduct({
+            name: "",
+            price: "",
+            discount: "",
+            shortDescription: "",
+            description: ``,
+            image_url: "",
+            category: "",
+            stock_available: "",
+          });
+          setWasProductUploaded(true);
+        } else {
+          setWasProductUploaded(false);
+        }
       });
   };
 
@@ -123,7 +128,7 @@ const ProductContextProvider = ({ children }) => {
       }
       `,
     };
-    fetch("https://git.heroku.com/sheltered-basin-40908.git/graphql", {
+    fetch("https://sheltered-basin-40908.herokuapp.com/graphql", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),
@@ -138,7 +143,6 @@ const ProductContextProvider = ({ children }) => {
       })
 
       .then((data) => {
-        console.log(data);
         setIsLoading(false);
         setProducts(data.data.getProducts);
       })
@@ -159,6 +163,7 @@ const ProductContextProvider = ({ children }) => {
         newProduct,
         handleNewProduct,
         handleNewProductSubmit,
+        wasProductUploaded,
       }}
     >
       {children}

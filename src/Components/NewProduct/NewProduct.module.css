@@ -7,6 +7,18 @@
   padding-left: 0.7rem;
   font-size: 16px;
 }
+.productAdded {
+  color: green;
+  font-style: italic;
+  font-size: 14px;
+  padding: 0.3rem 0.8rem;
+}
+.productFailed {
+  color: red;
+  font-style: italic;
+  font-size: 14px;
+  padding: 0.3rem 0.8rem;
+}
 .form_container {
   width: 96%;
   margin: 1rem auto;
