@@ -5,6 +5,7 @@ import {
   faShoppingCart,
   faHeart,
   faStar,
+  faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Product.module.css";
 import NavFooter from "../NavFooter/NavFooter";
@@ -27,7 +28,9 @@ const Product = () => {
       </div>
 
       <div className={styles.scrollVertical_info}>
-        <div>Stores Nearby</div>
+        <div>
+          <FontAwesomeIcon icon={faMapMarkerAlt} /> Stores Nearby
+        </div>
         <div>Skincare</div>
         <div>Eletronics</div>
         <div>Appliances</div>

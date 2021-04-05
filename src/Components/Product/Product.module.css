@@ -31,10 +31,15 @@
   background-color: rgb(236, 229, 236);
   margin: 1rem 0.4rem;
 }
+
 .scrollVertical_info * {
   border-radius: 15px;
 }
-
+::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+  display: none;
+}
 .product_container {
   position: relative;
   display: grid;
