@@ -1,45 +1,42 @@
-.fontawsomeIcon {
-  color: rgb(175, 172, 172);
-  text-decoration: none;
-  font-size: 1.3rem;
-}
 .NavFooter_Subcontainer {
   overflow: auto;
   white-space: nowrap;
-  background-color: rgb(241, 238, 241);
+  background-color: #f4f4ff;
   position: fixed;
   bottom: 0;
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 3.3rem;
-  border-top: 1px solid #ccc;
+  height: 3.1rem;
 }
 
 .NavFooter_Subcontainer > div {
   padding: 0.5rem;
 }
+
 .selected {
   color: white;
-  background-color: rgb(37, 37, 92);
-  padding: 0.3rem 1rem;
-  border-radius: 15px;
-  font-size: 14px;
+  background-color: #2c2e85;
+  padding: 0.4rem 0.8rem;
+  border-radius: 18px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
 }
-.selected:nth-child(1)::after {
-  content: "Home";
+.selected .selectedText {
+  display: block;
 }
-
-.selected:nth-child(2)::after {
-  content: "Cart";
+.selected .fontawsomeIcon {
+  color: white;
 }
-.selected:nth-child(3)::after {
-  content: "Wishlist";
+.fontawsomeIcon {
+  color: rgb(175, 172, 172);
+  text-decoration: none;
+  font-size: 1.3rem;
+  padding-right: 0.3rem;
 }
-.selected:nth-child(4)::after {
-  content: "Search";
-}
-.selected:nth-child(5)::after {
-  content: "Settings";
+.selectedText {
+  display: none;
+  font-size: 12px;
 }

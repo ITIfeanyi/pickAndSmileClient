@@ -15,9 +15,6 @@ const Header = () => {
           <div className={styles.headerNavbar}>
             <Navbar />
           </div>
-          <div className={styles.headerTitle}>
-            <Link to='/'>PickAndSmile </Link>
-          </div>
         </div>
         <div className={styles.headerCartContainer}>
           <Link to='/cart'>

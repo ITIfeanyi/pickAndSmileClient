@@ -5,6 +5,7 @@ import Header from "../Header/Header";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLongArrowAltLeft } from "@fortawesome/free-solid-svg-icons";
+import NavFooter from "../NavFooter/NavFooter";
 
 const Cart = () => {
   const { cartItems, removeItem, addItem } = useContext(ProductContext);
@@ -74,6 +75,7 @@ const Cart = () => {
           </div>
         </div>
       )}
+      <NavFooter />
     </>
   );
 };

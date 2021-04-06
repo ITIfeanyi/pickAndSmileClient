@@ -8,6 +8,7 @@ import UserContextProvider from "./Components/UserContext";
 import Cart from "./Components/Cart/Cart";
 import NewProduct from "./Components/NewProduct/NewProduct";
 import Signout from "./Components/Signout/Signout";
+import Wishlist from "./Components/Wishlist/Wishlist";
 
 function App() {
   return (
@@ -15,11 +16,14 @@ function App() {
       <ProductContextProvider>
         <div className='App'>
           <Switch>
-            <Route exact path='/'>
+            <Route exact path='/home'>
               <Product />
             </Route>
             <Route path='/cart'>
               <Cart />
+            </Route>
+            <Route path='/wishlist'>
+              <Wishlist />
             </Route>
             <Route path='/sign-in'>
               <SignIn />

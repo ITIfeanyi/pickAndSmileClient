@@ -17,12 +17,13 @@ const NavFooter = () => {
       <div className={styles.NavFooter_Container}>
         <div className={styles.NavFooter_Subcontainer}>
           <div className={styles.NavFooter_Link}>
-            <NavLink strict to='/nen' activeClassName={styles.selected}>
+            <NavLink to='/home' activeClassName={styles.selected}>
               {" "}
               <FontAwesomeIcon
                 className={styles.fontawsomeIcon}
                 icon={faHome}
               />{" "}
+              <span className={styles.selectedText}>Home</span>
             </NavLink>
           </div>
           <div>
@@ -33,15 +34,17 @@ const NavFooter = () => {
                 icon={faShoppingCart}
                 id='cart'
               />{" "}
+              <span className={styles.selectedText}>Cart</span>
             </NavLink>
           </div>
           <div>
-            <NavLink to='/' activeClassName={styles.selected}>
+            <NavLink to='/wishlist' activeClassName={styles.selected}>
               {" "}
               <FontAwesomeIcon
                 className={styles.fontawsomeIcon}
                 icon={faHeart}
               />{" "}
+              <span className={styles.selectedText}>Wishlist</span>
             </NavLink>
           </div>
           <div>
@@ -51,11 +54,13 @@ const NavFooter = () => {
                 className={styles.fontawsomeIcon}
                 icon={faSearch}
               />{" "}
+              <span className={styles.selectedText}>Search</span>
             </NavLink>
           </div>
           <div>
             <NavLink to='/settings' activeClassName={styles.selected}>
               <FontAwesomeIcon className={styles.fontawsomeIcon} icon={faCog} />{" "}
+              <span className={styles.selectedText}>Setting</span>
             </NavLink>
           </div>
         </div>

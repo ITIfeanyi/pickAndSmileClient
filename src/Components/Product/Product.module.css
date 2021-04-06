@@ -22,14 +22,18 @@
   font-size: 13px;
   overflow: auto;
   white-space: nowrap;
+  margin-left: 0.5rem;
 }
 
 .scrollVertical_info > div {
   display: inline-block;
-  padding: 0.5rem;
-  color: rgb(37, 37, 92);
-  background-color: rgb(236, 229, 236);
+  padding: 0.7rem 0.8rem;
+  color: #2c2d8a;
+  background-color: #ebebf7;
   margin: 1rem 0.4rem;
+}
+.storeNearby {
+  padding-left: 0.4rem;
 }
 
 .scrollVertical_info * {
@@ -86,7 +90,7 @@
 .product_price {
   font-weight: 600;
   font-size: 15px;
-  color: rgb(39, 214, 214);
+  color: #49b9ab;
 }
 .reviews,
 .shortdesc {
@@ -94,7 +98,7 @@
   font-size: 12px;
 }
 .review_star {
-  color: rgb(255, 179, 38);
+  color: #ff7c00;
 }
 
 .wishlist_addtoCart {
@@ -103,23 +107,22 @@
 }
 .wishlist_toggle {
   width: 35%;
-  color: #ccc;
+  color: #acadaf;
   font-size: 1rem;
 }
 .product_addCart {
-  padding: 0.4rem;
+  padding: 0.4rem 0.5rem;
   border: 0;
   border-radius: 15px;
-  background-color: rgb(37, 37, 92);
-  color: rgb(236, 229, 236);
-  width: 4.5rem;
+  background-color: #2c2e85;
+  color: #f8f7fc;
+  width: 4.3rem;
   display: flex;
   outline: none;
   border: none;
   justify-content: space-evenly;
   font-size: 0.7rem;
 }
-
-/* .product_addCart >span{
-  margin: ;
-} */
+.product_addCart span {
+  padding: 0.1rem;
+}

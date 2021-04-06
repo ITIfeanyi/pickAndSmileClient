@@ -29,15 +29,16 @@ const Product = () => {
 
       <div className={styles.scrollVertical_info}>
         <div>
-          <FontAwesomeIcon icon={faMapMarkerAlt} /> Stores Nearby
+          <FontAwesomeIcon icon={faMapMarkerAlt} />{" "}
+          <span className={styles.storeNearby}> Stores Nearby</span>
         </div>
         <div>Skincare</div>
         <div>Eletronics</div>
+        <div>Groceries</div>
         <div>Appliances</div>
         <div>Toys</div>
         <div>Health</div>
         <div>Kitchen</div>
-        <div>Groceries</div>
       </div>
 
       {!isLoading ? (
