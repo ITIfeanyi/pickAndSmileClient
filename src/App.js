@@ -16,7 +16,7 @@ function App() {
       <ProductContextProvider>
         <div className='App'>
           <Switch>
-            <Route exact path='/home'>
+            <Route exact path='/'>
               <Product />
             </Route>
             <Route path='/cart'>
