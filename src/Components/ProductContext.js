@@ -4,6 +4,10 @@ export const ProductContext = createContext();
 
 const ProductContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [wishlist, setWishlist] = useState(
+    JSON.parse(localStorage.getItem("pickandsmile_wishlist")) || []
+  );
+  const [wishlistToggler, setWishlistToggler] = useState(false);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [cartItems, setCartItems] = useState(
@@ -25,6 +29,7 @@ const ProductContextProvider = ({ children }) => {
   //cartitem localStorage
   useEffect(() => {
     localStorage.setItem("pickAndSmile", JSON.stringify(cartItems));
+    localStorage.setItem("pickandsmile_wishlist", JSON.stringify(wishlist));
   });
 
   const handleNewProduct = (e) => {
@@ -80,6 +85,17 @@ const ProductContextProvider = ({ children }) => {
           setWasProductUploaded(false);
         }
       });
+  };
+  //wishlist
+  const toggleWishlist = (product) => {
+    const exist = wishlist.find((x) => x.id === product.id);
+    if (exist) {
+      setWishlistToggler(!wishlistToggler);
+      setWishlist(wishlist.filter((x) => x.id !== product.id));
+    } else {
+      setWishlistToggler(!wishlistToggler);
+      setWishlist([...wishlist, product]);
+    }
   };
 
   // cart
@@ -164,6 +180,9 @@ const ProductContextProvider = ({ children }) => {
         handleNewProduct,
         handleNewProductSubmit,
         wasProductUploaded,
+        toggleWishlist,
+        wishlistToggler,
+        wishlist,
       }}
     >
       {children}

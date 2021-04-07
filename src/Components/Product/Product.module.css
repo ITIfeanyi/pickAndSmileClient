@@ -105,6 +105,9 @@
   display: flex;
   align-items: center;
 }
+.wishlist_addtoCart .wishlist_red {
+  color: red;
+}
 .wishlist_toggle {
   width: 35%;
   color: #acadaf;
@@ -125,4 +128,18 @@
 }
 .product_addCart span {
   padding: 0.1rem;
+}
+
+/* wishlist */
+
+.wishlist_empty_container {
+  width: 100%;
+  text-align: center;
+  display: absolute;
+  top: 10rem;
+}
+.wishlist_empty_subcontainer {
+  width: 80%;
+  margin: 10rem auto;
+  color: black;
 }

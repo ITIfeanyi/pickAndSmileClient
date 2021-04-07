@@ -15,8 +15,9 @@ import CssLoader from "../CssLoader/CssLoader";
 import { ProductContext } from "../ProductContext";
 const Product = () => {
   const { user } = useContext(UserContext);
-  const { products, isLoading, addItem } = useContext(ProductContext);
-
+  const { products, isLoading, addItem, toggleWishlist, wishlist } = useContext(
+    ProductContext
+  );
   return (
     <>
       <Header />
@@ -65,14 +66,26 @@ const Product = () => {
                       </span>
                       <span>4.5 star (20 Reviews )</span>
                     </div>
-                    <div
-                      className={styles.wishlist_addtoCart}
-                      onClick={() => addItem(product)}
-                    >
-                      <div className={styles.wishlist_toggle}>
-                        <FontAwesomeIcon icon={faHeart} />
+                    <div className={styles.wishlist_addtoCart}>
+                      <div
+                        className={styles.wishlist_toggle}
+                        onClick={() => toggleWishlist(product)}
+                      >
+                        {
+                          <FontAwesomeIcon
+                            icon={faHeart}
+                            className={
+                              wishlist.find((x) => x.id === product.id)
+                                ? styles.wishlist_red
+                                : ""
+                            }
+                          />
+                        }
                       </div>
-                      <button className={styles.product_addCart}>
+                      <button
+                        className={styles.product_addCart}
+                        onClick={() => addItem(product)}
+                      >
                         <span>
                           <FontAwesomeIcon icon={faShoppingCart} />
                         </span>
