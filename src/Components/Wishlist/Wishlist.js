@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import CssLoader from "../CssLoader/CssLoader";
 import { Link } from "react-router-dom";
+import TotalItemsWishlist from "./TotalItemsWishlist";
 
 const Wishlist = () => {
   const { wishlist, isLoading, addItem, toggleWishlist } = useContext(
@@ -19,6 +20,8 @@ const Wishlist = () => {
   return (
     <div>
       <Header />
+      <TotalItemsWishlist />
+
       {isLoading ? (
         ""
       ) : (
@@ -38,61 +41,66 @@ const Wishlist = () => {
         </div>
       )}
       {!isLoading ? (
-        <div className={styles.product_container}>
-          {wishlist.map((product) => {
-            return (
-              <div key={product.id} className={styles.product_subcontainer}>
-                <div className={styles.product_items}>
-                  <div className={styles.img_container}>
-                    <img src={product.image_url} alt='img' />
-                  </div>
-                  <div className={styles.product_details}>
-                    {" "}
-                    <div className={styles.product_name}> {product.name} </div>
-                    <div className={styles.shortdesc}>
-                      {product.shortDescription}
+        <>
+          <div className={styles.product_container}>
+            {wishlist.map((product) => {
+              return (
+                <div key={product.id} className={styles.product_subcontainer}>
+                  <div className={styles.product_items}>
+                    <div className={styles.img_container}>
+                      <img src={product.image_url} alt='img' />
                     </div>
-                    <div className={styles.product_price}>
-                      ${product.price}{" "}
-                    </div>
-                    <div className={styles.reviews}>
-                      <span className={styles.review_star}>
-                        <FontAwesomeIcon icon={faStar} />{" "}
-                      </span>
-                      <span>4.5 star (20 Reviews )</span>
-                    </div>
-                    <div className={styles.wishlist_addtoCart}>
-                      <div
-                        className={styles.wishlist_toggle}
-                        onClick={() => toggleWishlist(product)}
-                      >
-                        {
-                          <FontAwesomeIcon
-                            icon={faHeart}
-                            className={
-                              wishlist.find((x) => x.id === product.id)
-                                ? styles.wishlist_red
-                                : ""
-                            }
-                          />
-                        }
+                    <div className={styles.product_details}>
+                      {" "}
+                      <div className={styles.product_name}>
+                        {" "}
+                        {product.name}{" "}
                       </div>
-                      <button
-                        className={styles.product_addCart}
-                        onClick={() => addItem(product)}
-                      >
-                        <span>
-                          <FontAwesomeIcon icon={faShoppingCart} />
+                      <div className={styles.shortdesc}>
+                        {product.shortDescription}
+                      </div>
+                      <div className={styles.product_price}>
+                        ${product.price}{" "}
+                      </div>
+                      <div className={styles.reviews}>
+                        <span className={styles.review_star}>
+                          <FontAwesomeIcon icon={faStar} />{" "}
                         </span>
-                        <span>Add</span>
-                      </button>
+                        <span>4.5 star (20 Reviews )</span>
+                      </div>
+                      <div className={styles.wishlist_addtoCart}>
+                        <div
+                          className={styles.wishlist_toggle}
+                          onClick={() => toggleWishlist(product)}
+                        >
+                          {
+                            <FontAwesomeIcon
+                              icon={faHeart}
+                              className={
+                                wishlist.find((x) => x.id === product.id)
+                                  ? styles.wishlist_red
+                                  : ""
+                              }
+                            />
+                          }
+                        </div>
+                        <button
+                          className={styles.product_addCart}
+                          onClick={() => addItem(product)}
+                        >
+                          <span>
+                            <FontAwesomeIcon icon={faShoppingCart} />
+                          </span>
+                          <span>Add</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </>
       ) : (
         <div className={styles.CssLoader_product}>{<CssLoader />}</div>
       )}

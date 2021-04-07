@@ -143,3 +143,23 @@
   margin: 10rem auto;
   color: black;
 }
+/* TotalItemWishlist */
+.TotalItems_Wishlist_container {
+  position: relative;
+  width: 100%;
+}
+.TotalItems_Wishlist_subcontainer {
+  width: 94%;
+  margin: 1rem auto;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+.sortBy,
+.total_item {
+  padding: 0.4rem;
+  border-radius: 4px;
+}
+.sortBy {
+  background-color: #eaeaf6;
+}
