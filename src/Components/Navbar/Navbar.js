@@ -22,9 +22,6 @@ const Navbar = () => {
         </div>
         <div className={styles.navSubcontainer}>
           <ul className={styles.navMenu}>
-            <div className={styles.NavTitle}>
-              <p>Pick and Smile</p>
-            </div>
             <li onClick={() => setNavOpen(false)}>
               <Link to='#'>Home</Link>
             </li>
