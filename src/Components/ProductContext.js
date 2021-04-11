@@ -4,6 +4,8 @@ export const ProductContext = createContext();
 
 const ProductContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [skinCare, setSkinCare] = useState([]);
+  const [singleProduct, setSingleProduct] = useState([]);
   const [wishlist, setWishlist] = useState(
     JSON.parse(localStorage.getItem("pickandsmile_wishlist")) || []
   );
@@ -86,6 +88,46 @@ const ProductContextProvider = ({ children }) => {
         }
       });
   };
+  useEffect(() => {
+    const requestBody = {
+      query: `
+      query{
+        getSkincare{
+          id
+          name
+          description
+          price
+          image_url
+          category
+          stock_available
+          shortDescription
+          discount
+        }
+      }
+      `,
+    };
+    fetch("https://sheltered-basin-40908.herokuapp.com/graphql", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestBody),
+    })
+      .then((res) => {
+        if (!res.ok && res.status !== 200) {
+          throw new Error(
+            "unable to fetch data, please make sure you are connected to the internet"
+          );
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setIsLoading(false);
+        setSkinCare(data.data.getSkincare);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  }, []);
+
   //wishlist
   const toggleWishlist = (product) => {
     const exist = wishlist.find((x) => x.id === product.id);
@@ -97,8 +139,45 @@ const ProductContextProvider = ({ children }) => {
       setWishlist([...wishlist, product]);
     }
   };
+  //  handleSingleProductClick
+  const handleSingleProductClick = (id) => {
+    const requestBody = {
+      query: `
+      query{
+        getSingleProduct(id:"${id}"){
+          id
+          name
+          description
+          price
+          image_url        
+        }
+      }
+      `,
+    };
+    fetch("https://sheltered-basin-40908.herokuapp.com/graphql", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestBody),
+    })
+      .then((res) => {
+        if (!res.ok && res.status !== 200) {
+          throw new Error(
+            "unable to fetch data, please make sure you are connected to the internet"
+          );
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setIsLoading(false);
+        setSingleProduct(data.data.getSingleProduct);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
 
   // cart
+
   const addItem = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
@@ -183,6 +262,9 @@ const ProductContextProvider = ({ children }) => {
         toggleWishlist,
         wishlistToggler,
         wishlist,
+        skinCare,
+        handleSingleProductClick,
+        singleProduct,
       }}
     >
       {children}

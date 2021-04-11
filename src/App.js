@@ -10,6 +10,7 @@ import NewProduct from "./Components/NewProduct/NewProduct";
 import Signout from "./Components/Signout/Signout";
 import Wishlist from "./Components/Wishlist/Wishlist";
 import Skincare from "./Components/Skincare/Skincare";
+import SinglePage from "./Components/Singlepage/SinglePage";
 
 function App() {
   return (
@@ -41,7 +42,9 @@ function App() {
             <Route path='/new-product'>
               <NewProduct />
             </Route>
-
+            <Route path='/product/:id'>
+              <SinglePage />
+            </Route>
             <Route path='/contact'></Route>
           </Switch>
         </div>

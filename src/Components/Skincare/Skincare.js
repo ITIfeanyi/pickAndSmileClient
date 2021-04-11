@@ -17,11 +17,12 @@ import { Link } from "react-router-dom";
 const Skincare = () => {
   const {
     cartItems,
-    products,
+    skinCare,
     isLoading,
     addItem,
     toggleWishlist,
     wishlist,
+    handleSingleProductClick,
   } = useContext(ProductContext);
   return (
     <div>
@@ -60,56 +61,65 @@ const Skincare = () => {
       </div>
       {!isLoading ? (
         <div className={styles.product_container}>
-          {products.map((product) => {
+          {skinCare.map((product) => {
             return (
-              <div key={product.id} className={styles.product_subcontainer}>
-                <div className={styles.product_items}>
-                  <div className={styles.img_container}>
-                    <img src={product.image_url} alt='img' />
-                  </div>
-                  <div className={styles.product_details}>
-                    {" "}
-                    <div className={styles.product_name}> {product.name} </div>
-                    <div className={styles.shortdesc}>
-                      {product.shortDescription}
+              <div
+                key={product.id}
+                className={styles.product_subcontainer}
+                onClick={() => handleSingleProductClick(product.id)}
+              >
+                <Link to={`/product/${product.id}`}>
+                  <div className={styles.product_items}>
+                    <div className={styles.img_container}>
+                      <img src={product.image_url} alt='img' />
                     </div>
-                    <div className={styles.product_price}>
-                      ${product.price}{" "}
-                    </div>
-                    <div className={styles.reviews}>
-                      <span className={styles.review_star}>
-                        <FontAwesomeIcon icon={faStar} />{" "}
-                      </span>
-                      <span>4.5 star (20 Reviews )</span>
-                    </div>
-                    <div className={styles.wishlist_addtoCart}>
-                      <div
-                        className={styles.wishlist_toggle}
-                        onClick={() => toggleWishlist(product)}
-                      >
-                        {
-                          <FontAwesomeIcon
-                            icon={faHeart}
-                            className={
-                              wishlist.find((x) => x.id === product.id)
-                                ? styles.wishlist_red
-                                : ""
-                            }
-                          />
-                        }
+                    <div className={styles.product_details}>
+                      {" "}
+                      <div className={styles.product_name}>
+                        {" "}
+                        {product.name}{" "}
                       </div>
-                      <button
-                        className={styles.product_addCart}
-                        onClick={() => addItem(product)}
-                      >
-                        <span>
-                          <FontAwesomeIcon icon={faShoppingCart} />
+                      <div className={styles.shortdesc}>
+                        {product.shortDescription}
+                      </div>
+                      <div className={styles.product_price}>
+                        ${product.price}{" "}
+                      </div>
+                      <div className={styles.reviews}>
+                        <span className={styles.review_star}>
+                          <FontAwesomeIcon icon={faStar} />{" "}
                         </span>
-                        <span>Add</span>
-                      </button>
+                        <span>4.5 star (20 Reviews )</span>
+                      </div>
+                      <div className={styles.wishlist_addtoCart}>
+                        <div
+                          className={styles.wishlist_toggle}
+                          onClick={() => toggleWishlist(product)}
+                        >
+                          {
+                            <FontAwesomeIcon
+                              icon={faHeart}
+                              className={
+                                wishlist.find((x) => x.id === product.id)
+                                  ? styles.wishlist_red
+                                  : ""
+                              }
+                            />
+                          }
+                        </div>
+                        <button
+                          className={styles.product_addCart}
+                          onClick={() => addItem(product)}
+                        >
+                          <span>
+                            <FontAwesomeIcon icon={faShoppingCart} />
+                          </span>
+                          <span>Add</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
             );
           })}
