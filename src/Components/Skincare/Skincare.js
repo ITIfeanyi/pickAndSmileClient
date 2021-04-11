@@ -1,53 +1,62 @@
 import React, { useContext } from "react";
-import Header from "../Header/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faShoppingCart,
   faHeart,
   faStar,
-  faMapMarkerAlt,
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Product.module.css";
-import NavFooter from "../NavFooter/NavFooter";
+import cart_img from "../../img/shopping-cart (1).png";
 
-import { UserContext } from "../UserContext";
 import CssLoader from "../CssLoader/CssLoader";
 import { ProductContext } from "../ProductContext";
+import styles from "./Skin.module.css";
+import SkincareNavFooter from "../NavFooter/SkincareNavFooter";
 import { Link } from "react-router-dom";
-const Product = () => {
-  const { user } = useContext(UserContext);
-  const { products, isLoading, addItem, toggleWishlist, wishlist } = useContext(
-    ProductContext
-  );
+
+const Skincare = () => {
+  const {
+    cartItems,
+    products,
+    isLoading,
+    addItem,
+    toggleWishlist,
+    wishlist,
+  } = useContext(ProductContext);
   return (
-    <>
-      <Header />
-      <div className={styles.welcome_container}>
-        <div className={styles.welcome_subcontainer}>
-          <h4>Welcome {user}</h4>
+    <div>
+      <header className={styles.header}>
+        <div className={styles.subHeader}>
+          <span>
+            <Link to='/'>
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </Link>
+          </span>
+          <span>
+            {" "}
+            <p>Skincare</p>
+          </span>
+          <div className={styles.headerCartContainer}>
+            <Link to='/cart'>
+              <div className={styles.headerCart}>
+                <img src={cart_img} alt='img' />
+                <span className={styles.headerCartLength}>
+                  {cartItems.length}
+                </span>
+              </div>
+            </Link>
+          </div>
         </div>
-        <div className={styles.help}>What can we help you with today?</div>
+      </header>
+      <div className={styles.scrollVertical_info}>
+        <div>Cleaners</div>
+        <div>Moisturizers</div>
+        <div>Toner</div>
+        <div>New-In</div>
       </div>
 
-      <div className={styles.scrollVertical_info}>
-        <div>
-          <FontAwesomeIcon icon={faMapMarkerAlt} />{" "}
-          <span className={styles.storeNearby}> Stores Nearby</span>
-        </div>
-        <div>
-          <Link className={styles.skincareLink} to='/skincare'>
-            Skincare
-          </Link>{" "}
-        </div>
-        <div>Eletronics</div>
-        <div>Groceries</div>
-        <div>Appliances</div>
-        <div>Toys</div>
-        <div>Health</div>
-        <div>Kitchen</div>
-      </div>
       <div className={styles.product_header}>
-        <h3>Groceries You'll Love</h3>
+        <h3>From Your Faves!</h3>
       </div>
       {!isLoading ? (
         <div className={styles.product_container}>
@@ -109,9 +118,9 @@ const Product = () => {
         <div className={styles.CssLoader_product}>{<CssLoader />}</div>
       )}
 
-      <NavFooter />
-    </>
+      <SkincareNavFooter />
+    </div>
   );
 };
 
-export default Product;
+export default Skincare;

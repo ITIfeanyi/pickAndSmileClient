@@ -1,23 +1,39 @@
-.welcome_container {
-  padding: 0.7rem 0 1rem 0.7rem;
+.headerCartContainer {
+  position: relative;
+  /* right: 0.8rem; */
+  top: 0rem;
 }
-.welcome_subcontainer {
-  margin-bottom: 0.5rem;
+.headerCart img {
+  width: 23px;
 }
-.welcome_subcontainer h4 {
-  font-size: 14px;
+.headerCartLength {
+  font-size: 0.8rem;
+  font-weight: 700;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+  background-color: red;
+  position: absolute;
+  padding: 0.3px;
+  right: 0.2rem;
 }
-.help {
-  font-size: 14px;
-}
-.img_banner {
+.header {
   width: 100%;
-  margin: auto;
+  position: relative;
 }
-.img_banner img {
-  width: 100%;
+.subHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 94%;
+  margin: 0.5rem auto;
 }
-
+.subHeader a {
+  color: black;
+  margin: 0;
+  padding: 0;
+}
 .scrollVertical_info {
   font-size: 13px;
   overflow: auto;
@@ -32,9 +48,6 @@
   background-color: #ebebf7;
   margin: 1rem 0.4rem;
 }
-.storeNearby {
-  padding-left: 0.4rem;
-}
 
 .scrollVertical_info * {
   border-radius: 15px;
@@ -44,9 +57,7 @@
   background-color: transparent;
   display: none;
 }
-.skincareLink {
-  font-size: 13px;
-}
+
 .product_header {
   width: 94%;
   margin: 1rem auto;
@@ -136,38 +147,4 @@
 }
 .product_addCart span {
   padding: 0.1rem;
-}
-
-/* wishlist */
-
-.wishlist_empty_container {
-  width: 100%;
-  text-align: center;
-  display: absolute;
-  top: 10rem;
-}
-.wishlist_empty_subcontainer {
-  width: 80%;
-  margin: 10rem auto;
-  color: black;
-}
-/* TotalItemWishlist */
-.TotalItems_Wishlist_container {
-  position: relative;
-  width: 100%;
-}
-.TotalItems_Wishlist_subcontainer {
-  width: 94%;
-  margin: 1rem auto;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-}
-.sortBy,
-.total_item {
-  padding: 0.4rem;
-  border-radius: 4px;
-}
-.sortBy {
-  background-color: #eaeaf6;
 }

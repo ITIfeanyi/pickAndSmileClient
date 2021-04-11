@@ -9,6 +9,7 @@ import Cart from "./Components/Cart/Cart";
 import NewProduct from "./Components/NewProduct/NewProduct";
 import Signout from "./Components/Signout/Signout";
 import Wishlist from "./Components/Wishlist/Wishlist";
+import Skincare from "./Components/Skincare/Skincare";
 
 function App() {
   return (
@@ -34,7 +35,9 @@ function App() {
             <Route path='/signout'>
               <Signout />
             </Route>
-
+            <Route path='/skincare'>
+              <Skincare />
+            </Route>
             <Route path='/new-product'>
               <NewProduct />
             </Route>
