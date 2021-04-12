@@ -78,6 +78,11 @@
   flex-flow: column;
   border-radius: 15px;
 }
+.singleprod_link {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  color: unset;
+}
 .img_container {
   height: 45%;
   border-radius: 8px;

@@ -5,7 +5,8 @@ export const ProductContext = createContext();
 const ProductContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [skinCare, setSkinCare] = useState([]);
-  const [singleProduct, setSingleProduct] = useState([]);
+  const [singleProduct, setSingleProduct] = useState({});
+  const [singleProductCount, setSingleProductCount] = useState(0);
   const [wishlist, setWishlist] = useState(
     JSON.parse(localStorage.getItem("pickandsmile_wishlist")) || []
   );
@@ -141,6 +142,7 @@ const ProductContextProvider = ({ children }) => {
   };
   //  handleSingleProductClick
   const handleSingleProductClick = (id) => {
+    setSingleProductCount(1);
     const requestBody = {
       query: `
       query{
@@ -168,18 +170,41 @@ const ProductContextProvider = ({ children }) => {
         return res.json();
       })
       .then((data) => {
-        setIsLoading(false);
         setSingleProduct(data.data.getSingleProduct);
+        setIsLoading(false);
       })
       .catch((err) => {
         setError(err.message);
       });
   };
 
-  // cart
+  //single page add
+  const singleProductAdd = (product) => {
+    const exist = cartItems.find((x) => x.id === product.id);
+    console.log(exist);
+    if (exist) {
+      setCartItems(
+        cartItems.map((x) =>
+          x.id === product.id
+            ? { ...exist, qty: exist.qty + singleProductCount }
+            : x
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { ...product, qty: singleProductCount }]);
+    }
+  };
+  const singleProductIncrement = () => {
+    setSingleProductCount(singleProductCount + 1);
+  };
 
+  const singleProductDecrement = () => {
+    setSingleProductCount(singleProductCount - 1);
+  };
+  // cart
   const addItem = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
+    console.log(exist);
     if (exist) {
       setCartItems(
         cartItems.map((x) =>
@@ -265,6 +290,10 @@ const ProductContextProvider = ({ children }) => {
         skinCare,
         handleSingleProductClick,
         singleProduct,
+        singleProductAdd,
+        singleProductIncrement,
+        singleProductDecrement,
+        singleProductCount,
       }}
     >
       {children}

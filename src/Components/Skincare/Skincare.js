@@ -68,12 +68,16 @@ const Skincare = () => {
                 className={styles.product_subcontainer}
                 onClick={() => handleSingleProductClick(product.id)}
               >
-                <Link to={`/product/${product.id}`}>
-                  <div className={styles.product_items}>
-                    <div className={styles.img_container}>
-                      <img src={product.image_url} alt='img' />
-                    </div>
-                    <div className={styles.product_details}>
+                <div className={styles.product_items}>
+                  <div className={styles.img_container}>
+                    <img src={product.image_url} alt='img' />
+                  </div>
+
+                  <div className={styles.product_details}>
+                    <Link
+                      className={styles.singleprod_link}
+                      to={`/product/${product.id}`}
+                    >
                       {" "}
                       <div className={styles.product_name}>
                         {" "}
@@ -91,35 +95,33 @@ const Skincare = () => {
                         </span>
                         <span>4.5 star (20 Reviews )</span>
                       </div>
-                      <div className={styles.wishlist_addtoCart}>
-                        <div
-                          className={styles.wishlist_toggle}
-                          onClick={() => toggleWishlist(product)}
-                        >
-                          {
-                            <FontAwesomeIcon
-                              icon={faHeart}
-                              className={
-                                wishlist.find((x) => x.id === product.id)
-                                  ? styles.wishlist_red
-                                  : ""
-                              }
-                            />
-                          }
-                        </div>
-                        <button
-                          className={styles.product_addCart}
-                          onClick={() => addItem(product)}
-                        >
-                          <span>
-                            <FontAwesomeIcon icon={faShoppingCart} />
-                          </span>
-                          <span>Add</span>
-                        </button>
+                    </Link>
+                    <div className={styles.wishlist_addtoCart}>
+                      <div className={styles.wishlist_toggle}>
+                        {
+                          <FontAwesomeIcon
+                            icon={faHeart}
+                            onClick={() => toggleWishlist(product)}
+                            className={
+                              wishlist.find((x) => x.id === product.id)
+                                ? styles.wishlist_red
+                                : ""
+                            }
+                          />
+                        }
                       </div>
+                      <button
+                        className={styles.product_addCart}
+                        onClick={() => addItem(product)}
+                      >
+                        <span>
+                          <FontAwesomeIcon icon={faShoppingCart} />
+                        </span>
+                        <span>Add</span>
+                      </button>
                     </div>
                   </div>
-                </Link>
+                </div>
               </div>
             );
           })}
