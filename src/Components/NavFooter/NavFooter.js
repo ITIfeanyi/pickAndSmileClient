@@ -18,7 +18,6 @@ const NavFooter = () => {
         <div className={styles.NavFooter_Subcontainer}>
           <div className={styles.NavFooter_Link}>
             <NavLink exact to='/' activeClassName={styles.selected}>
-              {" "}
               <FontAwesomeIcon
                 className={styles.fontawsomeIcon}
                 icon={faHome}

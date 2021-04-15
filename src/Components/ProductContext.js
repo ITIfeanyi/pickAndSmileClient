@@ -193,6 +193,7 @@ const ProductContextProvider = ({ children }) => {
     } else {
       setCartItems([...cartItems, { ...product, qty: singleProductCount }]);
     }
+    setSingleProductCount(0);
   };
   const singleProductIncrement = () => {
     setSingleProductCount(singleProductCount + 1);

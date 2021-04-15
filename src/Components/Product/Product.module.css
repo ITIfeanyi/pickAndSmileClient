@@ -1,5 +1,5 @@
 .welcome_container {
-  padding: 0.7rem 0 1rem 0.7rem;
+  padding: 0.7rem 0 0 0.7rem;
 }
 .welcome_subcontainer {
   margin-bottom: 0.5rem;
@@ -30,7 +30,7 @@
   padding: 0.7rem 0.8rem;
   color: #2c2d8a;
   background-color: #ebebf7;
-  margin: 1rem 0.4rem;
+  margin: 0.8rem 0.4rem;
 }
 .storeNearby {
   padding-left: 0.4rem;

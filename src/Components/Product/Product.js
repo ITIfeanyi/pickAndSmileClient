@@ -14,6 +14,8 @@ import { UserContext } from "../UserContext";
 import CssLoader from "../CssLoader/CssLoader";
 import { ProductContext } from "../ProductContext";
 import { Link } from "react-router-dom";
+import Swiper from "../SwiperBox/SwiperBox";
+
 const Product = () => {
   const { user } = useContext(UserContext);
   const { products, isLoading, addItem, toggleWishlist, wishlist } = useContext(
@@ -28,6 +30,8 @@ const Product = () => {
         </div>
         <div className={styles.help}>What can we help you with today?</div>
       </div>
+
+      <Swiper />
 
       <div className={styles.scrollVertical_info}>
         <div>
