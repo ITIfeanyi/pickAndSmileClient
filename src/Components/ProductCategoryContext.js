@@ -11,19 +11,22 @@ const ProductCategoryContextProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("pickandsmile_singleCategory")) || []
   );
 
-  //cartitem localStorage
+  //single category localStorage
   useEffect(() => {
-    localStorage.setItem(
-      "pickandsmile_singleCategory",
-      JSON.stringify(singleCategory)
-    );
     localStorage.setItem(
       "pickandsmile_URLCategory",
       JSON.stringify(URLcategory)
     );
     setIsLoading(false);
-  });
+  }, [URLcategory]);
 
+  useEffect(() => {
+    localStorage.setItem(
+      "pickandsmile_singleCategory",
+      JSON.stringify(singleCategory)
+    );
+    setIsLoading(false);
+  }, [singleCategory]);
   const setURLcategory = (url) => {
     setURLCategory(url);
     setSingleCategory([]);
