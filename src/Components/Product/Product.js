@@ -12,13 +12,20 @@ import { Link } from "react-router-dom";
 import Swiper from "../SwiperBox/SwiperBox";
 import { ProductCategoryContext } from "../ProductCategoryContext";
 
+import { useHistory } from "react-router-dom";
 const Product = () => {
+  const history = useHistory();
+
   const { user } = useContext(UserContext);
   const { products, isLoading, addItem, toggleWishlist, wishlist } = useContext(
     ProductContext
   );
   const { setURLcategory } = useContext(ProductCategoryContext);
 
+  const handleSetURLcategory = (url) => {
+    setURLcategory(url);
+    history.push("/");
+  };
   return (
     <>
       <Header />
@@ -35,7 +42,7 @@ const Product = () => {
         <div>
           <Link
             className={styles.skincareLink}
-            onClick={() => setURLcategory("Skincare")}
+            onClick={() => handleSetURLcategory("Skincare")}
             to='/category/skincare'
           >
             Skincare
@@ -44,7 +51,7 @@ const Product = () => {
         <div>
           <Link
             className={styles.skincareLink}
-            onClick={() => setURLcategory("Clothes")}
+            onClick={() => handleSetURLcategory("Clothes")}
             to={"/category/clothes"}
           >
             Clothes
@@ -53,7 +60,7 @@ const Product = () => {
         <div>
           <Link
             className={styles.skincareLink}
-            onClick={() => setURLcategory("Groceries")}
+            onClick={() => handleSetURLcategory("Groceries")}
             to={"/category/groceries"}
           >
             Groceries
@@ -62,7 +69,7 @@ const Product = () => {
         <div>
           <Link
             className={styles.skincareLink}
-            onClick={() => setURLcategory("Appliances")}
+            onClick={() => handleSetURLcategory("Appliances")}
             to={"/category/appliances"}
           >
             Appliances
@@ -71,7 +78,7 @@ const Product = () => {
         <div>
           <Link
             className={styles.skincareLink}
-            onClick={() => setURLcategory("Computers")}
+            onClick={() => handleSetURLcategory("Computers")}
             to={"/category/computers"}
           >
             Computers
@@ -80,7 +87,7 @@ const Product = () => {
         <div>
           <Link
             className={styles.skincareLink}
-            onClick={() => setURLcategory("Health")}
+            onClick={() => handleSetURLcategory("Health")}
             to={"/category/health"}
           >
             Health
@@ -139,9 +146,6 @@ const Product = () => {
                         className={styles.product_addCart}
                         onClick={() => addItem(product)}
                       >
-                        {/* <span>
-                          <FontAwesomeIcon icon={faShoppingCart} />
-                        </span> */}
                         <span>Add</span>
                       </button>
                     </div>

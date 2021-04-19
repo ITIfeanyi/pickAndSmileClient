@@ -10,12 +10,11 @@ import {
   faArrowLeft,
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const SinglePage = () => {
   const {
     singleProduct,
-    isLoading,
     toggleWishlist,
     wishlist,
     singleProductAdd,
@@ -23,20 +22,24 @@ const SinglePage = () => {
     singleProductDecrement,
     singleProductCount,
   } = useContext(ProductContext);
+
+  const history = useHistory();
+
+  const handleGoBack = () => {
+    history.go(-1);
+  };
   return (
     <>
-      {isLoading ? (
+      {Object.values(singleProduct).length === 0 ? (
         <CssLoader />
       ) : (
         <div className={styles.singleProduct_container}>
           <div className={styles.backButton_singleproductImg}>
-            <span className={styles.backButton}>
-              <Link className={styles.back} to='/skincare'>
-                <FontAwesomeIcon
-                  icon={faArrowLeft}
-                  className={styles.backbtn_icon}
-                />
-              </Link>
+            <span onClick={handleGoBack} className={styles.backButton}>
+              <FontAwesomeIcon
+                icon={faArrowLeft}
+                className={styles.backbtn_icon}
+              />
             </span>
             <div className={styles.singleProductimg_container}>
               {/* <img src={singleProduct.image_url} alt='img' /> */}

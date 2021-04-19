@@ -5,6 +5,7 @@
 .headerCart img {
   width: 23px;
 }
+
 .headerCartLength {
   font-size: 0.8rem;
   font-weight: 700;
@@ -32,6 +33,15 @@
   color: black;
   margin: 0;
   padding: 0;
+}
+.goBack {
+  background-color: #eee;
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .scrollVertical_info {
   font-size: 13px;
@@ -151,4 +161,9 @@
 }
 .product_addCart span {
   padding: 0.1rem;
+}
+.emptyCategory {
+  width: 90%;
+  margin: 50% auto;
+  text-align: center;
 }

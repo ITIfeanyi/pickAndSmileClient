@@ -5,7 +5,9 @@ export const ProductContext = createContext();
 const ProductContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [skinCare, setSkinCare] = useState([]);
-  const [singleProduct, setSingleProduct] = useState({});
+  const [singleProduct, setSingleProduct] = useState(
+    JSON.parse(localStorage.getItem("pickandsmile_singleProduct")) || {}
+  );
   const [singleProductCount, setSingleProductCount] = useState(0);
   const [wishlist, setWishlist] = useState(
     JSON.parse(localStorage.getItem("pickandsmile_wishlist")) || []
@@ -33,6 +35,10 @@ const ProductContextProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("pickAndSmile", JSON.stringify(cartItems));
     localStorage.setItem("pickandsmile_wishlist", JSON.stringify(wishlist));
+    localStorage.setItem(
+      "pickandsmile_singleProduct",
+      JSON.stringify(singleProduct)
+    );
   });
 
   const handleNewProduct = (e) => {
@@ -143,6 +149,7 @@ const ProductContextProvider = ({ children }) => {
   //  handleSingleProductClick
   const handleSingleProductClick = (id) => {
     setSingleProductCount(1);
+    setSingleProduct({});
     const requestBody = {
       query: `
       query{

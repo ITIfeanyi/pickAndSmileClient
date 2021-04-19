@@ -27,10 +27,11 @@ const ProductCategoryContextProvider = ({ children }) => {
     );
     setIsLoading(false);
   }, [singleCategory]);
+
   const setURLcategory = (url) => {
+    setIsLoading(true);
     setURLCategory(url);
     setSingleCategory([]);
-    setIsLoading(true);
 
     const requestBody = {
       query: `
@@ -63,8 +64,8 @@ const ProductCategoryContextProvider = ({ children }) => {
       })
 
       .then((data) => {
-        setIsLoading(false);
         setSingleCategory(data.data.getProductCategory);
+        setIsLoading(false);
       })
       .catch((err) => {
         setError(err.message);

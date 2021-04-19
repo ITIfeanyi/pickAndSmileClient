@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faShoppingCart,
   faHeart,
   faStar,
   faArrowLeft,
@@ -13,8 +12,11 @@ import { ProductContext } from "../ProductContext";
 import styles from "./singleCategory.module.css";
 import { Link } from "react-router-dom";
 import { ProductCategoryContext } from "../ProductCategoryContext";
+import { useHistory } from "react-router-dom";
 
 const SingleCategory = () => {
+  const history = useHistory();
+
   const {
     cartItems,
     addItem,
@@ -22,14 +24,18 @@ const SingleCategory = () => {
     wishlist,
     handleSingleProductClick,
   } = useContext(ProductContext);
-  const { singleCategory, isLoading, URLcategory } = useContext(
-    ProductCategoryContext
-  );
+  const { singleCategory, URLcategory } = useContext(ProductCategoryContext);
+
+  const handleSingleCategoryHistory = () => {
+    const categoryHis = "/category/" + URLcategory;
+    history.push(categoryHis);
+  };
+  console.log(singleCategory.length);
   return (
     <div>
       <header className={styles.header}>
         <div className={styles.subHeader}>
-          <span>
+          <span className={styles.goBack}>
             <Link to='/'>
               <FontAwesomeIcon icon={faArrowLeft} />
             </Link>
@@ -52,9 +58,11 @@ const SingleCategory = () => {
       </header>
 
       <div className={styles.product_header}>
-        <h3>From Your Faves!</h3>
+        <h3>{URLcategory} category</h3>
       </div>
-      {!isLoading ? (
+      {singleCategory.length === 0 ? (
+        <div className={styles.CssLoader_product}>{<CssLoader />}</div>
+      ) : (
         <div className={styles.product_container}>
           {singleCategory.map((product) => {
             return (
@@ -72,6 +80,7 @@ const SingleCategory = () => {
                     <Link
                       className={styles.singleprod_link}
                       to={`/product/${product.id}`}
+                      onClick={handleSingleCategoryHistory}
                     >
                       {" "}
                       <div className={styles.product_name}>
@@ -109,9 +118,6 @@ const SingleCategory = () => {
                         className={styles.product_addCart}
                         onClick={() => addItem(product)}
                       >
-                        <span>
-                          <FontAwesomeIcon icon={faShoppingCart} />
-                        </span>
                         <span>Add</span>
                       </button>
                     </div>
@@ -121,10 +127,7 @@ const SingleCategory = () => {
             );
           })}
         </div>
-      ) : (
-        <div className={styles.CssLoader_product}>{<CssLoader />}</div>
       )}
-      {/* <SkincareNavFooter /> */}
     </div>
   );
 };
