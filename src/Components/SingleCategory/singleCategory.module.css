@@ -1,0 +1,154 @@
+.headerCartContainer {
+  position: relative;
+  top: 0rem;
+}
+.headerCart img {
+  width: 23px;
+}
+.headerCartLength {
+  font-size: 0.8rem;
+  font-weight: 700;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+  background-color: red;
+  position: absolute;
+  padding: 0.3px;
+  right: 0.2rem;
+}
+.header {
+  width: 100%;
+  position: relative;
+}
+.subHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 94%;
+  margin: 0.5rem auto;
+}
+.subHeader a {
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+.scrollVertical_info {
+  font-size: 13px;
+  overflow: auto;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
+
+.scrollVertical_info > div {
+  display: inline-block;
+  padding: 0.7rem 0.8rem;
+  color: #2c2d8a;
+  background-color: #ebebf7;
+  margin: 1rem 0.4rem;
+}
+
+.scrollVertical_info * {
+  border-radius: 15px;
+}
+::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+  display: none;
+}
+
+.product_header {
+  width: 94%;
+  margin: 1rem auto;
+  font-size: 0.8rem;
+}
+.product_container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 94%;
+  margin: 15px auto;
+}
+
+.product_items {
+  background-color: white;
+  height: 15rem;
+  display: flex;
+  flex-flow: column;
+  border-radius: 15px;
+}
+.singleprod_link {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  color: unset;
+}
+.img_container {
+  height: 45%;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.img_container > img {
+  width: 60%;
+  height: 80%;
+  margin: 10px auto;
+}
+.product_details {
+  width: 90%;
+  margin: 3px auto;
+}
+.product_name,
+.shortdesc,
+.product_price,
+.reviews,
+.wishlist_addtoCart {
+  margin-bottom: 5px;
+}
+.product_name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.product_price {
+  font-weight: 600;
+  font-size: 15px;
+  color: #49b9ab;
+}
+.reviews,
+.shortdesc {
+  display: flex;
+  font-size: 12px;
+}
+.review_star {
+  color: #ff7c00;
+}
+
+.wishlist_addtoCart {
+  display: flex;
+  align-items: center;
+}
+.wishlist_addtoCart .wishlist_red {
+  color: red;
+}
+.wishlist_toggle {
+  width: 35%;
+  color: #acadaf;
+  font-size: 1rem;
+}
+.product_addCart {
+  padding: 0.4rem 0.5rem;
+  border: 0;
+  border-radius: 15px;
+  background-color: #2c2e85;
+  color: #f8f7fc;
+  width: 4.3rem;
+  display: flex;
+  outline: none;
+  border: none;
+  justify-content: space-evenly;
+  font-size: 0.7rem;
+}
+.product_addCart span {
+  padding: 0.1rem;
+}

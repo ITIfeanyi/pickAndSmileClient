@@ -2,9 +2,8 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
-  faCog,
   faShoppingCart,
-  faSearch,
+  faUser,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -51,15 +50,9 @@ const NavFooter = () => {
               {" "}
               <FontAwesomeIcon
                 className={styles.fontawsomeIcon}
-                icon={faSearch}
+                icon={faUser}
               />{" "}
-              <span className={styles.selectedText}>Search</span>
-            </NavLink>
-          </div>
-          <div>
-            <NavLink to='/settings' activeClassName={styles.selected}>
-              <FontAwesomeIcon className={styles.fontawsomeIcon} icon={faCog} />{" "}
-              <span className={styles.selectedText}>Setting</span>
+              <span className={styles.selectedText}>Account</span>
             </NavLink>
           </div>
         </div>

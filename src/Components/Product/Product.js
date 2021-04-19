@@ -1,12 +1,7 @@
 import React, { useContext } from "react";
 import Header from "../Header/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faShoppingCart,
-  faHeart,
-  faStar,
-  faMapMarkerAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Product.module.css";
 import NavFooter from "../NavFooter/NavFooter";
 
@@ -15,12 +10,15 @@ import CssLoader from "../CssLoader/CssLoader";
 import { ProductContext } from "../ProductContext";
 import { Link } from "react-router-dom";
 import Swiper from "../SwiperBox/SwiperBox";
+import { ProductCategoryContext } from "../ProductCategoryContext";
 
 const Product = () => {
   const { user } = useContext(UserContext);
   const { products, isLoading, addItem, toggleWishlist, wishlist } = useContext(
     ProductContext
   );
+  const { setURLcategory } = useContext(ProductCategoryContext);
+
   return (
     <>
       <Header />
@@ -35,20 +33,64 @@ const Product = () => {
 
       <div className={styles.scrollVertical_info}>
         <div>
-          <FontAwesomeIcon icon={faMapMarkerAlt} />{" "}
-          <span className={styles.storeNearby}> Stores Nearby</span>
-        </div>
-        <div>
-          <Link className={styles.skincareLink} to='/skincare'>
+          <Link
+            className={styles.skincareLink}
+            onClick={() => setURLcategory("Skincare")}
+            to='/category/skincare'
+          >
             Skincare
           </Link>{" "}
         </div>
-        <div>Eletronics</div>
-        <div>Groceries</div>
-        <div>Appliances</div>
-        <div>Toys</div>
-        <div>Health</div>
-        <div>Kitchen</div>
+        <div>
+          <Link
+            className={styles.skincareLink}
+            onClick={() => setURLcategory("Clothes")}
+            to={"/category/clothes"}
+          >
+            Clothes
+          </Link>{" "}
+        </div>
+        <div>
+          <Link
+            className={styles.skincareLink}
+            onClick={() => setURLcategory("Groceries")}
+            to={"/category/groceries"}
+          >
+            Groceries
+          </Link>{" "}
+        </div>
+        <div>
+          <Link
+            className={styles.skincareLink}
+            onClick={() => setURLcategory("Appliances")}
+            to={"/category/appliances"}
+          >
+            Appliances
+          </Link>{" "}
+        </div>
+        <div>
+          <Link
+            className={styles.skincareLink}
+            onClick={() => setURLcategory("Computers")}
+            to={"/category/computers"}
+          >
+            Computers
+          </Link>{" "}
+        </div>
+        <div>
+          <Link
+            className={styles.skincareLink}
+            onClick={() => setURLcategory("Health")}
+            to={"/category/health"}
+          >
+            Health
+          </Link>{" "}
+        </div>
+        <div>
+          <Link className={styles.skincareLink} to='/kitchen'>
+            Kitchen
+          </Link>{" "}
+        </div>
       </div>
       <div className={styles.product_header}>
         <h3>Groceries You'll Love</h3>
@@ -97,9 +139,9 @@ const Product = () => {
                         className={styles.product_addCart}
                         onClick={() => addItem(product)}
                       >
-                        <span>
+                        {/* <span>
                           <FontAwesomeIcon icon={faShoppingCart} />
-                        </span>
+                        </span> */}
                         <span>Add</span>
                       </button>
                     </div>
