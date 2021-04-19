@@ -17,14 +17,14 @@ import { ProductCategoryContext } from "../ProductCategoryContext";
 const SingleCategory = () => {
   const {
     cartItems,
-
     addItem,
     toggleWishlist,
     wishlist,
     handleSingleProductClick,
   } = useContext(ProductContext);
-  const { singleCategory, isLoading } = useContext(ProductCategoryContext);
-  console.log(singleCategory);
+  const { singleCategory, isLoading, URLcategory } = useContext(
+    ProductCategoryContext
+  );
   return (
     <div>
       <header className={styles.header}>
@@ -36,7 +36,7 @@ const SingleCategory = () => {
           </span>
           <span>
             {" "}
-            <p>Skincare</p>
+            <p>{URLcategory}</p>
           </span>
           <div className={styles.headerCartContainer}>
             <Link to='/cart'>

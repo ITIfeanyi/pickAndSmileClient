@@ -1,15 +1,33 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 
 export const ProductCategoryContext = createContext();
 const ProductCategoryContextProvider = ({ children }) => {
-  const [URLcategory, setURLCategory] = useState("");
+  const [URLcategory, setURLCategory] = useState(
+    JSON.parse(localStorage.getItem("pickandsmile_URLCategory")) || ""
+  );
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [singleCategory, setSingleCategory] = useState([]);
+  const [singleCategory, setSingleCategory] = useState(
+    JSON.parse(localStorage.getItem("pickandsmile_singleCategory")) || []
+  );
+
+  //cartitem localStorage
+  useEffect(() => {
+    localStorage.setItem(
+      "pickandsmile_singleCategory",
+      JSON.stringify(singleCategory)
+    );
+    localStorage.setItem(
+      "pickandsmile_URLCategory",
+      JSON.stringify(URLcategory)
+    );
+    setIsLoading(false);
+  });
 
   const setURLcategory = (url) => {
     setURLCategory(url);
     setSingleCategory([]);
+    setIsLoading(true);
 
     const requestBody = {
       query: `
