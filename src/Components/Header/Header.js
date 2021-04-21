@@ -10,23 +10,25 @@ const Header = () => {
   const { cartItems } = useContext(ProductContext);
   return (
     <>
-      <div className={styles.headerContainer}>
-        <div className={styles.headerNav_headerTitle}>
-          <div className={styles.headerNavbar}>
-            <Navbar />
+      <section className={styles.headerContainerTop}>
+        <div className={styles.headerContainer}>
+          <div className={styles.headerNav_headerTitle}>
+            <div className={styles.headerNavbar}>
+              <Navbar />
+            </div>
+          </div>
+          <div className={styles.headerCartContainer}>
+            <Link to='/cart'>
+              <div className={styles.headerCart}>
+                <img src={cart_img} alt='img' />
+                <span className={styles.headerCartLength}>
+                  {cartItems.length}
+                </span>
+              </div>
+            </Link>
           </div>
         </div>
-        <div className={styles.headerCartContainer}>
-          <Link to='/cart'>
-            <div className={styles.headerCart}>
-              <img src={cart_img} alt='img' />
-              <span className={styles.headerCartLength}>
-                {cartItems.length}
-              </span>
-            </div>
-          </Link>
-        </div>
-      </div>
+      </section>
     </>
   );
 };

@@ -188,7 +188,6 @@ const ProductContextProvider = ({ children }) => {
   //single page add
   const singleProductAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
-    console.log(exist);
     if (exist) {
       setCartItems(
         cartItems.map((x) =>
@@ -212,7 +211,6 @@ const ProductContextProvider = ({ children }) => {
   // cart
   const addItem = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
-    console.log(exist);
     if (exist) {
       setCartItems(
         cartItems.map((x) =>

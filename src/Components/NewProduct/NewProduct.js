@@ -89,18 +89,15 @@ const NewProduct = () => {
               </label>
               <select name='category' required onChange={handleNewProduct}>
                 <option>Please select a category</option>
-
+                <option value='Camera'>Camera</option>
                 <option value='Groceries'>Groceries</option>
                 <option value='Skincare'>Skincare</option>
                 <option value='Appliances'>Appliances</option>
-                <option value='Phones'>Phones</option>
                 <option value='Clothes'>Clothes</option>
                 <option value='Computers'>Computers</option>
                 <option value='Toys'>Toys</option>
                 <option value='Kitchen'>Kitchen</option>
-                <option value='Toys'>Toys</option>
                 <option value='Health'>Health</option>
-                <option value='Funiture'>Funiture</option>
               </select>
             </div>
             <div className={styles.form_inputContainer}>

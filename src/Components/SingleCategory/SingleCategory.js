@@ -6,6 +6,7 @@ import {
   faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import cart_img from "../../img/shopping-cart (1).png";
+import singleCatImg from "../../img/imgSingleCategory.png";
 
 import CssLoader from "../CssLoader/CssLoader";
 import { ProductContext } from "../ProductContext";
@@ -30,7 +31,6 @@ const SingleCategory = () => {
     const categoryHis = "/category/" + URLcategory;
     history.push(categoryHis);
   };
-  console.log(singleCategory.length);
   return (
     <div>
       <header className={styles.header}>
@@ -56,7 +56,9 @@ const SingleCategory = () => {
           </div>
         </div>
       </header>
-
+      <section className={styles.hero_container}>
+        <img className={styles.hero_img} src={singleCatImg} alt='img' />
+      </section>
       <div className={styles.product_header}>
         <h3>{URLcategory} category</h3>
       </div>
@@ -97,7 +99,7 @@ const SingleCategory = () => {
                         <span className={styles.review_star}>
                           <FontAwesomeIcon icon={faStar} />{" "}
                         </span>
-                        <span>4.5 star (20 Reviews )</span>
+                        <span>4.0 (24 Reviews )</span>
                       </div>
                     </Link>
                     <div className={styles.wishlist_addtoCart}>

@@ -4,19 +4,22 @@ import NavFooter from "../NavFooter/NavFooter";
 import { ProductContext } from "../ProductContext";
 import styles from "../Product/Product.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faShoppingCart,
-  faHeart,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import CssLoader from "../CssLoader/CssLoader";
 import { Link } from "react-router-dom";
 import TotalItemsWishlist from "./TotalItemsWishlist";
+import { useHistory } from "react-router-dom";
 
 const Wishlist = () => {
+  const history = useHistory();
+
   const { wishlist, isLoading, addItem, toggleWishlist } = useContext(
     ProductContext
   );
+  const handleSingleCategoryHistory = () => {
+    const categoryHis = "/wishlist";
+    history.push(categoryHis);
+  };
   return (
     <div>
       <Header />
@@ -50,24 +53,30 @@ const Wishlist = () => {
                     <div className={styles.img_container}>
                       <img src={product.image_url} alt='img' />
                     </div>
+
                     <div className={styles.product_details}>
                       {" "}
-                      <div className={styles.product_name}>
-                        {" "}
-                        {product.name}{" "}
-                      </div>
-                      <div className={styles.shortdesc}>
-                        {product.shortDescription}
-                      </div>
-                      <div className={styles.product_price}>
-                        ${product.price}{" "}
-                      </div>
-                      <div className={styles.reviews}>
-                        <span className={styles.review_star}>
-                          <FontAwesomeIcon icon={faStar} />{" "}
-                        </span>
-                        <span>4.5 star (20 Reviews )</span>
-                      </div>
+                      <Link
+                        to={`/product/${product.id}`}
+                        onClick={handleSingleCategoryHistory}
+                        className={styles.singleprod_link}
+                      >
+                        <div className={styles.product_name}>
+                          {product.name}{" "}
+                        </div>
+                        <div className={styles.shortdesc}>
+                          {product.shortDescription}
+                        </div>
+                        <div className={styles.product_price}>
+                          ${product.price}{" "}
+                        </div>
+                        <div className={styles.reviews}>
+                          <span className={styles.review_star}>
+                            <FontAwesomeIcon icon={faStar} />{" "}
+                          </span>
+                          <span>4.5 star (20 Reviews )</span>
+                        </div>
+                      </Link>
                       <div className={styles.wishlist_addtoCart}>
                         <div
                           className={styles.wishlist_toggle}
@@ -88,9 +97,6 @@ const Wishlist = () => {
                           className={styles.product_addCart}
                           onClick={() => addItem(product)}
                         >
-                          <span>
-                            <FontAwesomeIcon icon={faShoppingCart} />
-                          </span>
                           <span>Add</span>
                         </button>
                       </div>

@@ -12,7 +12,6 @@ const TotalItems_Wishlist = () => {
             <span className={styles.total_item}>
               Total items ({wishlist.length}){" "}
             </span>
-            <span className={styles.sortBy}>Sort by </span>
           </div>
         </div>
       )}

@@ -1,28 +1,28 @@
 import React, { useContext } from "react";
 import { ProductContext } from "../ProductContext";
 import styles from "./Cart.module.css";
-import Header from "../Header/Header";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLongArrowAltLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import NavFooter from "../NavFooter/NavFooter";
+import { useHistory } from "react-router-dom";
 
 const Cart = () => {
+  const history = useHistory();
   const { cartItems, removeItem, addItem } = useContext(ProductContext);
   const subtotal = cartItems
     .reduce((acc, cur) => acc + cur.price * cur.qty, 0)
     .toFixed(2);
 
+  const handleGoBack = () => {
+    history.goBack();
+  };
+
   return (
     <>
-      <Header />
-      <div className={styles.goBackHome}>
-        <Link to='/'>
-          <span>
-            <FontAwesomeIcon icon={faLongArrowAltLeft} />
-          </span>
-        </Link>
-      </div>
+      <span onClick={handleGoBack} className={styles.backButtonCart}>
+        <FontAwesomeIcon icon={faArrowLeft} className={styles.backbtn_icon} />
+      </span>
 
       {cartItems.length > 0 ? (
         <div className={styles.cartContainer}>

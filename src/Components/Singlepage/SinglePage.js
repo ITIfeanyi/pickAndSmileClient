@@ -4,13 +4,12 @@ import styles from "./Singlepagecss.module.css";
 import CssLoader from "../CssLoader/CssLoader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faShoppingCart,
   faHeart,
   faStar,
   faArrowLeft,
-  faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import cart_img from "../../img/shopping-cart (1).png";
 
 const SinglePage = () => {
   const {
@@ -21,12 +20,16 @@ const SinglePage = () => {
     singleProductIncrement,
     singleProductDecrement,
     singleProductCount,
+    cartItems,
   } = useContext(ProductContext);
 
   const history = useHistory();
 
   const handleGoBack = () => {
     history.go(-1);
+  };
+  const handleCartHistory = () => {
+    history.push(`/product/${singleProduct.id}`);
   };
   return (
     <>
@@ -41,8 +44,22 @@ const SinglePage = () => {
                 className={styles.backbtn_icon}
               />
             </span>
+            <span className={styles.headerCartContainer}>
+              <Link to='/cart' onClick={handleCartHistory}>
+                <div className={styles.headerCart}>
+                  <img src={cart_img} alt='img' />
+                  <span className={styles.headerCartLength}>
+                    {cartItems.length}
+                  </span>
+                </div>
+              </Link>
+            </span>
             <div className={styles.singleProductimg_container}>
-              {/* <img src={singleProduct.image_url} alt='img' /> */}
+              <img
+                src={singleProduct.image_url}
+                className={styles.singleProductimg}
+                alt='img'
+              />
             </div>
           </div>
           <div className={styles.singleProduct_subcontainer}>
@@ -69,22 +86,17 @@ const SinglePage = () => {
                   icon={faHeart}
                 />{" "}
               </span>
-              <span className={styles.singleProduct_title}>Wishlist</span>
             </div>
           </div>
           <div className={styles.reviews}>
             {" "}
             <p>
-              <FontAwesomeIcon className={styles.star} icon={faStar} /> 4.5
-              stars(22 Reviews){" "}
+              <FontAwesomeIcon className={styles.star} icon={faStar} /> 3.8
+              stars(2 Reviews){" "}
             </p>{" "}
           </div>
           <div className={styles.singleProduct_description_container}>
             <p className={styles.description}>{singleProduct.description}</p>
-            <span className={styles.readmore}>Read more</span>
-            <span className={styles.ArrowRight}>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </span>
           </div>
           <div className={styles.singleProduct_btn_cart}>
             <div className={styles.singleProduct_inc_dec}>
@@ -104,9 +116,6 @@ const SinglePage = () => {
               </button>
             </div>
             <div className={styles.singleProduct_addtocart}>
-              <span className={styles.ShoppingCart}>
-                <FontAwesomeIcon icon={faShoppingCart} />{" "}
-              </span>
               <button
                 onClick={() => singleProductAdd(singleProduct)}
                 className={styles.addtocart}

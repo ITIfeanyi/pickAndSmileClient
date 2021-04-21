@@ -1,7 +1,7 @@
 .swiper_img_container {
   width: 94%;
   margin: auto;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.5rem;
 }
 .swiper_img {
   width: 100%;
@@ -16,7 +16,7 @@
   border-radius: 10px;
 }
 .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #2c2d8a;
+  background-color: black;
 }
 
 .swiper-button-prev.swiper-button-disabled,

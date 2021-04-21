@@ -1,25 +1,31 @@
 import React, { useContext } from "react";
 import Header from "../Header/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Product.module.css";
 import NavFooter from "../NavFooter/NavFooter";
 
 import { UserContext } from "../UserContext";
-import CssLoader from "../CssLoader/CssLoader";
-import { ProductContext } from "../ProductContext";
 import { Link } from "react-router-dom";
-import Swiper from "../SwiperBox/SwiperBox";
 import { ProductCategoryContext } from "../ProductCategoryContext";
+import img1 from "../../img/hero1.png";
+import img2 from "../../img/hero2.png";
+
+import smaple1 from "../../img/lens2_homepage.jpg";
+import smaple2 from "../../img/lens_homepage.jpg";
+import smaple3 from "../../img/len_homepage.jpg";
+import smaple4 from "../../img/canon1_home.jpg";
+import smaple5 from "../../img/theter_home.jpg";
+import smaple6 from "../../img/washingmachine_home.jpg";
+import smaple7 from "../../img/freezer_home.jpg";
+import smaple8 from "../../img/tv_home.jpg";
 
 import { useHistory } from "react-router-dom";
 const Product = () => {
   const history = useHistory();
 
   const { user } = useContext(UserContext);
-  const { products, isLoading, addItem, toggleWishlist, wishlist } = useContext(
-    ProductContext
-  );
+
   const { setURLcategory } = useContext(ProductCategoryContext);
 
   const handleSetURLcategory = (url) => {
@@ -31,14 +37,32 @@ const Product = () => {
       <Header />
       <div className={styles.welcome_container}>
         <div className={styles.welcome_subcontainer}>
-          <h4>Welcome {user}</h4>
+          <h4>Hello, {user}</h4>
         </div>
-        <div className={styles.help}>What can we help you with today?</div>
+      </div>
+      <div className={styles.ProductDeliver}>
+        <p className={styles.ProductDeliverText}>
+          <FontAwesomeIcon
+            icon={faLocationArrow}
+            className={styles.ProductDeliverIcon}
+          />
+          Find your cheap and quality products
+        </p>
+      </div>
+      <div className={styles.hero_container}>
+        <img className={styles.hero} src={img1} alt='img' />
       </div>
 
-      <Swiper />
-
       <div className={styles.scrollVertical_info}>
+        <div>
+          <Link
+            className={styles.skincareLink}
+            onClick={() => handleSetURLcategory("Camera")}
+            to='/category/camera'
+          >
+            Cameras
+          </Link>{" "}
+        </div>
         <div>
           <Link
             className={styles.skincareLink}
@@ -94,70 +118,76 @@ const Product = () => {
           </Link>{" "}
         </div>
         <div>
-          <Link className={styles.skincareLink} to='/kitchen'>
+          <Link
+            onClick={() => handleSetURLcategory("Kitchen")}
+            className={styles.skincareLink}
+            to={"/category/kitchen"}
+          >
             Kitchen
           </Link>{" "}
         </div>
       </div>
-      <div className={styles.product_header}>
-        <h3>Groceries You'll Love</h3>
-      </div>
-      {!isLoading ? (
-        <div className={styles.product_container}>
-          {products.map((product) => {
-            return (
-              <div key={product.id} className={styles.product_subcontainer}>
-                <div className={styles.product_items}>
-                  <div className={styles.img_container}>
-                    <img src={product.image_url} alt='img' />
-                  </div>
-                  <div className={styles.product_details}>
-                    {" "}
-                    <div className={styles.product_name}> {product.name} </div>
-                    <div className={styles.shortdesc}>
-                      {product.shortDescription}
-                    </div>
-                    <div className={styles.product_price}>
-                      ${product.price}{" "}
-                    </div>
-                    <div className={styles.reviews}>
-                      <span className={styles.review_star}>
-                        <FontAwesomeIcon icon={faStar} />{" "}
-                      </span>
-                      <span>4.5 star (20 Reviews )</span>
-                    </div>
-                    <div className={styles.wishlist_addtoCart}>
-                      <div
-                        className={styles.wishlist_toggle}
-                        onClick={() => toggleWishlist(product)}
-                      >
-                        {
-                          <FontAwesomeIcon
-                            icon={faHeart}
-                            className={
-                              wishlist.find((x) => x.id === product.id)
-                                ? styles.wishlist_red
-                                : ""
-                            }
-                          />
-                        }
-                      </div>
-                      <button
-                        className={styles.product_addCart}
-                        onClick={() => addItem(product)}
-                      >
-                        <span>Add</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+      <article className={styles.product_content_container}>
+        <div className={styles.product_content_grid}>
+          <div className={styles.product_img_container}>
+            <img src={smaple1} alt='img' className={styles.product_content} />
+          </div>
+          <div className={styles.product_img_container}>
+            <img src={smaple2} alt='img' className={styles.product_content} />
+          </div>
         </div>
-      ) : (
-        <div className={styles.CssLoader_product}>{<CssLoader />}</div>
-      )}
+        <div></div>
+        <div className={styles.product_content_grid}>
+          <div className={styles.product_img_container}>
+            <img src={smaple3} alt='img' className={styles.product_content} />
+          </div>
+          <div className={styles.product_img_container}>
+            <img src={smaple4} alt='img' className={styles.product_content} />
+          </div>
+        </div>
+        <div className={styles.seeMore}>
+          <Link
+            onClick={() => handleSetURLcategory("Camera")}
+            to='/category/camera'
+            className={styles.Link_category}
+          >
+            See more Cameras & Lens
+          </Link>
+        </div>
+      </article>
+
+      <div className={styles.hero_container}>
+        <img className={styles.hero} src={img2} alt='img' />
+      </div>
+
+      <article className={styles.product_content_container}>
+        <div className={styles.product_content_grid}>
+          <div className={styles.product_img_container}>
+            <img src={smaple5} alt='img' className={styles.product_content} />
+          </div>
+          <div className={styles.product_img_container}>
+            <img src={smaple6} alt='img' className={styles.product_content} />
+          </div>
+        </div>
+        <div></div>
+        <div className={styles.product_content_grid}>
+          <div className={styles.product_img_container}>
+            <img src={smaple7} alt='img' className={styles.product_content} />
+          </div>
+          <div className={styles.product_img_container}>
+            <img src={smaple8} alt='img' className={styles.product_content} />
+          </div>
+        </div>
+        <div className={styles.seeMore}>
+          <Link
+            onClick={() => handleSetURLcategory("Camera")}
+            to='/category/camera'
+            className={styles.Link_category}
+          >
+            See more Appliances
+          </Link>
+        </div>
+      </article>
 
       <NavFooter />
     </>

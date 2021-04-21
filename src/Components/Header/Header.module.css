@@ -2,13 +2,17 @@ i {
   color: #2c2d8a;
   font-size: 20px;
 }
-.headerContainer {
-  display: flex;
-  flex-flow: row;
-  z-index: 100;
+.headerContainerTop {
+  background-color: #f4f4ff;
   position: -webkit-sticky;
   position: sticky;
   top: 0px;
+  z-index: 100;
+}
+.headerContainer {
+  display: flex;
+  flex-flow: row;
+
   background-color: #f4f4ff;
   padding-bottom: 0.6rem;
   width: 94%;

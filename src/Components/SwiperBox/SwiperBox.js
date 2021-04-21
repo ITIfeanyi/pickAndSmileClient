@@ -4,7 +4,7 @@ import SwiperCore, { Navigation, Pagination } from "swiper";
 
 import "./Swipercss.css";
 import "swiper/swiper-bundle.css";
-import img1 from "../../img/product_test_img.png";
+import img1 from "../../img/hero1.png";
 
 SwiperCore.use([Navigation, Pagination]);
 
