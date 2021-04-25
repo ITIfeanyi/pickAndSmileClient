@@ -3,6 +3,10 @@ import React, { createContext, useEffect, useState } from "react";
 export const ProductContext = createContext();
 
 const ProductContextProvider = ({ children }) => {
+  //single item in the from page 4 items to load
+  const [singleFrontItem, setSingleFrontItem] = useState(
+    JSON.parse(localStorage.getItem("pickandsmile_SingleFrontItem")) || []
+  );
   const [products, setProducts] = useState([]);
   const [skinCare, setSkinCare] = useState([]);
   const [singleProduct, setSingleProduct] = useState(
@@ -38,6 +42,11 @@ const ProductContextProvider = ({ children }) => {
     localStorage.setItem(
       "pickandsmile_singleProduct",
       JSON.stringify(singleProduct)
+    );
+
+    localStorage.setItem(
+      "pickandsmile_SingleFrontItem",
+      JSON.stringify(singleFrontItem)
     );
   });
 
@@ -199,7 +208,7 @@ const ProductContextProvider = ({ children }) => {
     } else {
       setCartItems([...cartItems, { ...product, qty: singleProductCount }]);
     }
-    setSingleProductCount(0);
+    setSingleProductCount(1);
   };
   const singleProductIncrement = () => {
     setSingleProductCount(singleProductCount + 1);
@@ -277,6 +286,49 @@ const ProductContextProvider = ({ children }) => {
       });
   }, []);
 
+  //Product frontpage single render
+  useEffect(() => {
+    (() => {
+      setIsLoading(true);
+      const requestBody = {
+        query: `
+        query{
+            getProductCategory(category:${"Groceries"}){
+              id
+              name
+              description
+              shortDescription
+              price
+              image_url
+              category
+              stock_available
+            }  
+            }
+        `,
+      };
+      fetch("https://sheltered-basin-40908.herokuapp.com/graphql", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(requestBody),
+      })
+        .then((res) => {
+          if (!res.ok && res.status !== 200) {
+            throw new Error(
+              "unable to fetch data, please make sure you are connected to the internet"
+            );
+          }
+          return res.json();
+        })
+        .then((data) => {
+          setSingleFrontItem(data.data.getProductCategory);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          setError(err.message);
+        });
+    })();
+  }, []);
+
   return (
     <ProductContext.Provider
       value={{
@@ -300,6 +352,7 @@ const ProductContextProvider = ({ children }) => {
         singleProductIncrement,
         singleProductDecrement,
         singleProductCount,
+        singleFrontItem,
       }}
     >
       {children}

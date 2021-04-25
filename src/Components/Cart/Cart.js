@@ -10,9 +10,7 @@ import { useHistory } from "react-router-dom";
 const Cart = () => {
   const history = useHistory();
   const { cartItems, removeItem, addItem } = useContext(ProductContext);
-  const subtotal = cartItems
-    .reduce((acc, cur) => acc + cur.price * cur.qty, 0)
-    .toFixed(2);
+  const subtotal = cartItems.reduce((acc, cur) => acc + cur.price * cur.qty, 0);
 
   const handleGoBack = () => {
     history.goBack();
@@ -20,9 +18,16 @@ const Cart = () => {
 
   return (
     <>
-      <span onClick={handleGoBack} className={styles.backButtonCart}>
-        <FontAwesomeIcon icon={faArrowLeft} className={styles.backbtn_icon} />
-      </span>
+      <section>
+        <span onClick={handleGoBack} className={styles.backButtonCart}>
+          <FontAwesomeIcon icon={faArrowLeft} className={styles.backbtn_icon} />
+        </span>
+        <span className={styles.logo}>
+          <Link to='/'>
+            <h3>Pick and Smile</h3>
+          </Link>
+        </span>
+      </section>
 
       {cartItems.length > 0 ? (
         <div className={styles.cartContainer}>
@@ -45,7 +50,7 @@ const Cart = () => {
                       </div>
                       <div className={styles.Price_subprice_container}>
                         <p className={styles.Price_subtotal}>
-                          ${(item.qty * item.price).toFixed(2)}{" "}
+                          ${(item.qty * item.price).toLocaleString()}{" "}
                         </p>
                       </div>
                     </div>
@@ -56,7 +61,7 @@ const Cart = () => {
             <div className={styles.total_container}>
               <div className={styles.total}>
                 <p>Total</p>
-                <p>{subtotal}</p>
+                <p>{subtotal.toLocaleString()}</p>
               </div>
             </div>
             <div className={styles.checkout}>

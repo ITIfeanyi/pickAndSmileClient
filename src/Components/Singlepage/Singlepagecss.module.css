@@ -70,6 +70,12 @@
   width: 94%;
   margin: auto;
 }
+@media (min-width: 600px) {
+  .bottom_container {
+    width: 60%;
+    margin: auto;
+  }
+}
 .singleProduct_name_price {
   display: flex;
   flex-flow: column;
@@ -85,7 +91,7 @@
 }
 .singleProduct_price {
   font-weight: 600;
-  color: #49b9ab;
+  color: #2c4e8e;
   font-size: 15px;
 }
 .singleProduct_icon {
@@ -115,7 +121,7 @@
   color: rgb(49, 47, 47);
 }
 .star {
-  color: #ff7c00;
+  color: #ffc700;
   font-size: 14px;
 }
 .singleProduct_description_container {
@@ -160,19 +166,21 @@
 }
 
 .singleProduct_addtocart {
-  width: 40%;
-  height: 2.7rem;
-  background-color: #2c2e85;
-  color: white;
+  background-color: #4f90a5;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 0.5rem;
+  width: 40%;
+  height: 2.7rem;
 }
 .ShoppingCart {
   margin-right: 0.9rem;
 }
 .addtocart {
+  display: block;
+  padding: 0.5rem 1rem;
+  background-color: red;
   font-weight: 500;
   font-size: 15px;
   outline: none;

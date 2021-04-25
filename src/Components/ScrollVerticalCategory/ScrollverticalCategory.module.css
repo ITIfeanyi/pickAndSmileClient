@@ -1,0 +1,36 @@
+.scrollVertical_info {
+  font-size: 13px;
+  overflow: auto;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
+@media (min-width: 800px) {
+  .scrollVertical_info {
+    text-align: center;
+  }
+}
+
+.scrollVertical_info > div {
+  display: inline-block;
+  padding: 0.7rem 0.8rem;
+  background-color: #dae3e5;
+  margin: 0.8rem 0.4rem;
+}
+
+.scrollVertical_info * {
+  border-radius: 5px;
+}
+::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+  display: none;
+}
+.skincareLink {
+  font-size: 14px;
+  color: black;
+}
+@media (min-width: 700px) {
+  .scrollVertical_info .skincareLink {
+    font-size: 16px;
+  }
+}

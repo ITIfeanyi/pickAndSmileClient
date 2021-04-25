@@ -1,3 +1,9 @@
+@media (min-width: 750px) {
+  .nav_icon_container .nav_icon {
+    display: none;
+  }
+}
+
 .nav_icon_container {
   width: 20px;
   position: relative;
@@ -21,12 +27,12 @@
   top: 0px;
 }
 .nav_icon > span:nth-child(2) {
-  top: 4px;
-  width: 60%;
+  top: 7px;
+  width: 100%;
 }
 
 .nav_icon > span:nth-child(3) {
-  top: 8px;
+  top: 14px;
   width: 50%;
 }
 .navContainer {
@@ -35,6 +41,16 @@
   margin: 0;
 }
 
+@media (min-width: 750px) {
+  .NavMask {
+    display: none;
+  }
+  .navContainer .navSubcontainer {
+    position: absolute;
+    left: 13rem;
+    top: -0.4rem;
+  }
+}
 .NavMask {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -53,12 +69,21 @@
 }
 .navSubcontainer {
   background-color: white;
-  width: 70%;
+  width: 60%;
   height: 100%;
   position: fixed;
   margin: 0;
   bottom: 0;
   left: 0;
+}
+
+@media (min-width: 750px) {
+  .navContainer .navMenu {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 27rem;
+  }
 }
 
 .navMenu {
@@ -73,15 +98,28 @@
 li {
   padding-top: 1rem;
 }
+
 li > a {
-  color: rgb(37, 37, 92);
+  color: black;
   border-bottom: 1px solid #ccc;
   display: block;
   width: 100%;
   font-size: 0.9rem;
   padding: 0.5rem;
 }
-
+@media (min-width: 750px) {
+  .navMenu li {
+    padding-top: 0;
+    margin-left: auto;
+  }
+  .navMenu li a {
+    border-bottom: none;
+    font-weight: 600;
+  }
+  .selected {
+    border-bottom: 1px solid black;
+  }
+}
 .login {
   position: absolute;
   bottom: 0;

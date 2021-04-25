@@ -68,7 +68,7 @@ const Wishlist = () => {
                           {product.shortDescription}
                         </div>
                         <div className={styles.product_price}>
-                          ${product.price}{" "}
+                          ${product.price.toLocaleString()}{" "}
                         </div>
                         <div className={styles.reviews}>
                           <span className={styles.review_star}>

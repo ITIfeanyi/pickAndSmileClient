@@ -18,7 +18,7 @@ const SignUp = () => {
   return (
     <>
       {user && <Redirect to='/' />}
-      <div>
+      <div className={styles.signIn_body}>
         <div className={styles.EmptyHeader}>
           <EmptyHeader />
         </div>

@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import styles from "./SignIn_signUp.module.css";
 import EmptyHeader from "../Header/EmptyHeader";
 import { UserContext } from "../UserContext";
+import NavFooter from "../NavFooter/NavFooter";
 
 const SignIn = () => {
   const {
@@ -16,7 +17,7 @@ const SignIn = () => {
   return (
     <>
       {user && <Redirect to='/' />}
-      <div>
+      <div className={styles.signIn_body}>
         <div className={styles.EmptyHeader}>
           <EmptyHeader />
         </div>
@@ -65,6 +66,7 @@ const SignIn = () => {
           </form>
         </div>
       </div>
+      <NavFooter />
     </>
   );
 };

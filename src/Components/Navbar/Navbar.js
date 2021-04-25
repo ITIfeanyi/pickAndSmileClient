@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -7,9 +7,19 @@ import styles from "./Navbar.module.css";
 import { UserContext } from "../UserContext";
 
 const Navbar = () => {
-  const [navOpen, setNavOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(
+    window.innerWidth > 750 ? true : false
+  );
   const { user, handleSignout, isAdmin } = useContext(UserContext);
   let menu;
+  const handleWindowResize = () => {
+    if (window.innerWidth > 750) {
+      setNavOpen(true);
+    } else {
+      setNavOpen(false);
+    }
+  };
+  window.addEventListener("resize", handleWindowResize);
 
   if (navOpen) {
     menu = (
@@ -22,57 +32,65 @@ const Navbar = () => {
         </div>
         <div className={styles.navSubcontainer}>
           <ul className={styles.navMenu}>
-            <li onClick={() => setNavOpen(false)}>
-              <Link to='#'>Home</Link>
+            <li
+              onClick={() => setNavOpen(window.innerWidth > 750 ? true : false)}
+            >
+              <NavLink activeClassName={styles.selected} to='/'>
+                Home
+              </NavLink>
             </li>
-            <li onClick={() => setNavOpen(false)}>
-              <Link to='#'>Orders</Link>
-            </li>
+
             {isAdmin && (
-              <li onClick={() => setNavOpen(false)}>
-                <Link to='/new-product'>Add new Product</Link>
+              <li
+                onClick={() =>
+                  setNavOpen(window.innerWidth > 750 ? true : false)
+                }
+              >
+                <NavLink className={styles.selected} to='/new-product'>
+                  Add new Product
+                </NavLink>
               </li>
             )}
-            <li onClick={() => setNavOpen(false)}>
-              <Link to='#'>Pending Reviews</Link>
+
+            <li
+              onClick={() => setNavOpen(window.innerWidth > 750 ? true : false)}
+            >
+              <NavLink className={styles.selected} to='/wishlist'>
+                Wishlists
+              </NavLink>
             </li>
-            <li onClick={() => setNavOpen(false)}>
-              <Link to='#'>Wishlists</Link>
+            <li
+              onClick={() => setNavOpen(window.innerWidth > 750 ? true : false)}
+            >
+              {!user && (
+                <NavLink
+                  onClick={() =>
+                    setNavOpen(window.innerWidth > 750 ? true : false)
+                  }
+                  className={styles.active_navbar}
+                  to='/sign-in'
+                >
+                  Login
+                </NavLink>
+              )}
             </li>
+
             <li onClick={() => setNavOpen(false)}>
               {user ? (
-                <Link to='/' onClick={handleSignout}>
+                <NavLink
+                  className={styles.active_navbar}
+                  to='/'
+                  onClick={handleSignout}
+                >
                   Sign out
-                </Link>
+                </NavLink>
               ) : (
-                <Link to='/sign-up'>Register</Link>
+                <NavLink className={styles.active_navbar} to='/sign-up'>
+                  Register
+                </NavLink>
               )}
             </li>
           </ul>
-          {!user && (
-            <div className={styles.login}>
-              <div className={styles.normalLogin}>
-                <p>Already a customer? </p>
-                <Link onClick={() => setNavOpen(false)} to='/sign-in'>
-                  Login
-                </Link>
-              </div>
-              <div className={styles.facbook_google}>
-                <div
-                  className={styles.faceBookLogin}
-                  onClick={() => setNavOpen(false)}
-                >
-                  FaceBook
-                </div>
-                <div
-                  className={styles.googleLogin}
-                  onClick={() => setNavOpen(false)}
-                >
-                  Google
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     );
@@ -87,6 +105,7 @@ const Navbar = () => {
             <span></span>
             <span></span>
           </div>
+
           {menu}
         </div>
       </nav>

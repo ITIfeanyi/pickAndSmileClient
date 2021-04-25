@@ -7,13 +7,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import cart_img from "../../img/shopping-cart (1).png";
 import singleCatImg from "../../img/imgSingleCategory.png";
-
 import CssLoader from "../CssLoader/CssLoader";
 import { ProductContext } from "../ProductContext";
 import styles from "./singleCategory.module.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { ProductCategoryContext } from "../ProductCategoryContext";
-import { useHistory } from "react-router-dom";
+import NavFooter from "../NavFooter/NavFooter";
 
 const SingleCategory = () => {
   const history = useHistory();
@@ -28,9 +27,10 @@ const SingleCategory = () => {
   const { singleCategory, URLcategory } = useContext(ProductCategoryContext);
 
   const handleSingleCategoryHistory = () => {
-    const categoryHis = "/category/" + URLcategory;
+    const categoryHis = "/category/" + URLcategory.toLowerCase();
     history.push(categoryHis);
   };
+
   return (
     <div>
       <header className={styles.header}>
@@ -74,9 +74,13 @@ const SingleCategory = () => {
                 onClick={() => handleSingleProductClick(product.id)}
               >
                 <div className={styles.product_items}>
-                  <div className={styles.img_container}>
+                  <Link
+                    to={`/product/${product.id}`}
+                    onClick={handleSingleCategoryHistory}
+                    className={styles.img_container}
+                  >
                     <img src={product.image_url} alt='img' />
-                  </div>
+                  </Link>
 
                   <div className={styles.product_details}>
                     <Link
@@ -93,7 +97,7 @@ const SingleCategory = () => {
                         {product.shortDescription}
                       </div>
                       <div className={styles.product_price}>
-                        ${product.price}{" "}
+                        ${product.price.toLocaleString()}{" "}
                       </div>
                       <div className={styles.reviews}>
                         <span className={styles.review_star}>
@@ -130,6 +134,7 @@ const SingleCategory = () => {
           })}
         </div>
       )}
+      <NavFooter />
     </div>
   );
 };

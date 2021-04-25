@@ -12,11 +12,17 @@ const Header = () => {
     <>
       <section className={styles.headerContainerTop}>
         <div className={styles.headerContainer}>
-          <div className={styles.headerNav_headerTitle}>
+          <div className={styles.headerNav_title}>
             <div className={styles.headerNavbar}>
               <Navbar />
             </div>
+            <div className={styles.headerTitle_container}>
+              <Link className={styles.header_link} to='/'>
+                <h3 className={styles.headerTitle}>Pick and Smile</h3>
+              </Link>
+            </div>
           </div>
+
           <div className={styles.headerCartContainer}>
             <Link to='/cart'>
               <div className={styles.headerCart}>

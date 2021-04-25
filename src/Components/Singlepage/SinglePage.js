@@ -62,74 +62,73 @@ const SinglePage = () => {
               />
             </div>
           </div>
-          <div className={styles.singleProduct_subcontainer}>
-            <div className={styles.singleProduct_name_price}>
-              <span className={styles.singleProduct_name}>
-                {singleProduct.name}
-              </span>
-              <span className={styles.singleProduct_price}>
-                $ {singleProduct.price}
-              </span>
+          <div className={styles.bottom_container}>
+            <div className={styles.singleProduct_subcontainer}>
+              <div className={styles.singleProduct_name_price}>
+                <span className={styles.singleProduct_name}>
+                  {singleProduct.name}
+                </span>
+                <span className={styles.singleProduct_price}>
+                  $ {singleProduct.price.toLocaleString()}
+                </span>
+              </div>
+              <div className={styles.singleProduct_wishlist}>
+                <span
+                  className={styles.singleProduct_icon}
+                  onClick={() => toggleWishlist(singleProduct)}
+                >
+                  {" "}
+                  <FontAwesomeIcon
+                    className={
+                      wishlist.find((x) => x.id === singleProduct.id)
+                        ? styles.wishlist_red
+                        : ""
+                    }
+                    icon={faHeart}
+                  />{" "}
+                </span>
+              </div>
             </div>
-            <div className={styles.singleProduct_wishlist}>
-              <span
-                className={styles.singleProduct_icon}
-                onClick={() => toggleWishlist(singleProduct)}
-              >
-                {" "}
-                <FontAwesomeIcon
-                  className={
-                    wishlist.find((x) => x.id === singleProduct.id)
-                      ? styles.wishlist_red
-                      : ""
-                  }
-                  icon={faHeart}
-                />{" "}
-              </span>
+
+            <div className={styles.reviews}>
+              {" "}
+              <p>
+                <FontAwesomeIcon className={styles.star} icon={faStar} /> 3.8
+                stars(2 Reviews){" "}
+              </p>{" "}
             </div>
-          </div>
-          <div className={styles.reviews}>
-            {" "}
-            <p>
-              <FontAwesomeIcon className={styles.star} icon={faStar} /> 3.8
-              stars(2 Reviews){" "}
-            </p>{" "}
-          </div>
-          <div className={styles.singleProduct_description_container}>
-            <p className={styles.description}>{singleProduct.description}</p>
-          </div>
-          <div className={styles.singleProduct_btn_cart}>
-            <div className={styles.singleProduct_inc_dec}>
-              <button
-                disabled={singleProductCount === 0}
-                className={styles.dec}
-                onClick={() => singleProductDecrement()}
-              >
-                -
-              </button>
-              <span className={styles.qty}>{singleProductCount}</span>
-              <button
-                className={styles.inc}
-                onClick={() => singleProductIncrement()}
-              >
-                +
-              </button>
+            <div className={styles.singleProduct_description_container}>
+              <p className={styles.description}>{singleProduct.description}</p>
             </div>
-            <div className={styles.singleProduct_addtocart}>
-              <button
-                onClick={() => singleProductAdd(singleProduct)}
-                className={styles.addtocart}
-                disabled={singleProductCount === 0}
-              >
-                Add to cart
-              </button>
+            <div className={styles.singleProduct_btn_cart}>
+              <div className={styles.singleProduct_inc_dec}>
+                <button
+                  disabled={singleProductCount === 0}
+                  className={styles.dec}
+                  onClick={() => singleProductDecrement()}
+                >
+                  -
+                </button>
+                <span className={styles.qty}>{singleProductCount}</span>
+                <button
+                  className={styles.inc}
+                  onClick={() => singleProductIncrement()}
+                >
+                  +
+                </button>
+              </div>
+              <div className={styles.singleProduct_addtocart}>
+                <button
+                  onClick={() => singleProductAdd(singleProduct)}
+                  className={styles.addtocart}
+                  disabled={singleProductCount === 0}
+                >
+                  Add to cart
+                </button>
+              </div>
             </div>
+            <hr className={styles.line} />
           </div>
-          <hr className={styles.line} />
-          <section className={styles.reviews_section}>
-            <h3>Reviews</h3>
-            <div></div>
-          </section>
         </div>
       )}
     </>

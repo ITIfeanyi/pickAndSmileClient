@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -6,11 +6,14 @@ import {
   faUser,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
+import { ProductContext } from "../ProductContext";
 
 import styles from "./NavFooter.module.css";
 import { NavLink } from "react-router-dom";
 
 const NavFooter = () => {
+  const { wishlist } = useContext(ProductContext);
+
   return (
     <>
       <div className={styles.NavFooter_Container}>
@@ -36,8 +39,12 @@ const NavFooter = () => {
             </NavLink>
           </div>
           <div>
-            <NavLink to='/wishlist' activeClassName={styles.selected}>
-              {" "}
+            <NavLink
+              to='/wishlist'
+              id={styles.test}
+              activeClassName={styles.selected}
+            >
+              <span className={styles.wishlist_count}>{wishlist.length}</span>{" "}
               <FontAwesomeIcon
                 className={styles.fontawsomeIcon}
                 icon={faHeart}
@@ -46,7 +53,7 @@ const NavFooter = () => {
             </NavLink>
           </div>
           <div>
-            <NavLink to='/search' activeClassName={styles.selected}>
+            <NavLink to='/sign-in' activeClassName={styles.selected}>
               {" "}
               <FontAwesomeIcon
                 className={styles.fontawsomeIcon}
