@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useHistory, Link } from "react-router-dom";
 import cart_img from "../../img/shopping-cart (1).png";
+import NavFooter from "../NavFooter/NavFooter";
 
 const SinglePage = () => {
   const {
@@ -131,6 +132,7 @@ const SinglePage = () => {
           </div>
         </div>
       )}
+      <NavFooter />
     </>
   );
 };

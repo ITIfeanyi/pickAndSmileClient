@@ -165,8 +165,8 @@ const Product = () => {
           </div>
           <div className={styles.seeMore}>
             <Link
-              onClick={() => handleSetURLcategory("Camera")}
-              to='/category/camera'
+              onClick={() => handleSetURLcategory("Appliances")}
+              to='/category/appliances'
               className={styles.Link_category}
             >
               See more Appliances
